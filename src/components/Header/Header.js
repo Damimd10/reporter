@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { func } from 'prop-types';
 
-const Header = ({ onChange, onSearch }) => {
+const Header = ({ onSearchUser }) => {
+  const [query, setQuery] = useState();
+
+  const handleChange = e => setQuery(e.target.value);
+
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      onSearchUser(query);
+    }
+  }
+
   return (
     <header className="section">
       <div className="field">
         <div className="control has-icons-right">
           <input
             className="input is-large is-rounded"
-            onChange={onChange}
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
             placeholder="What are you looking for?"
             type="text"
           />
@@ -22,8 +33,7 @@ const Header = ({ onChange, onSearch }) => {
 };
 
 Header.propTypes = {
-  onChange: func.isRequired,
-  onSearch: func.isRequired,
+  onSearchUser: func.isRequired,
 };
 
 export default Header;
