@@ -24,7 +24,7 @@ const Header = ({ onSearchUser }) => {
             className="input is-large is-rounded"
             onChange={handleChange}
             onKeyPress={handleKeyPress}
-            placeholder="What are you looking for?"
+            placeholder="Who are you looking for?"
             type="text"
             value={query}
           />

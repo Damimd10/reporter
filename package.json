@@ -10,6 +10,7 @@
     "@yisheng90/react-loading": "^1.2.3",
     "bulma": "^0.8.2",
     "graphql-request": "^1.8.2",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

@@ -9,3 +9,10 @@
   margin: 1rem !important;
   width: 100%;
 }
+
+.profile-info-container {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
