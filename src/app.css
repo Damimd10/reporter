@@ -15,19 +15,3 @@ html, body {
 .app-content {
   padding: 1rem;
 }
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.follow-info {
-  margin: 1rem !important;
-  width: 100%;
-}
-
-.test {
-  width: 100%;
-}
