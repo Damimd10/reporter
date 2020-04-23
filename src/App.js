@@ -24,7 +24,13 @@ const App = () => {
           <Profile loading={loading} data={data} />
         </div>
         <div className="column">
-          {data && <Statistics userId={data.user.id} userName={data.user.login} />}
+          {data && (
+            <Statistics
+              contributions={data.user.contributionsCollection.contributionCalendar.weeks}
+              userId={data.user.id}
+              userName={data.user.login}
+            />
+          )}
         </div>
       </div>
     </div>

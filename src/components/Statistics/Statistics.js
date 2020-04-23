@@ -1,9 +1,10 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, shape } from 'prop-types';
 
 import Skeleton from '@yisheng90/react-loading';
 
 import useRepositories from './useRepositories';
+import Contributions from './components/Contributions';
 
 const StatisticsLogin = () => (
   <section className="section container has-text-centered is-paddingless">
@@ -32,17 +33,15 @@ const StatisticsLogin = () => (
   </section>
 );
 
-const Statistics = ({ userId, userName }) => {
+const Statistics = ({ contributions, userId, userName }) => {
   const { data, loading } = useRepositories({ userId, userName });
 
   if (loading) return <StatisticsLogin />
 
-  console.log('HERE', data);
-
   return (
     <section className="section container has-text-centered is-paddingless">
-      <div className="block">
-        Block
+      <div className="block" style={{ height: '400px'}}>
+        <Contributions collection={contributions} />
       </div>
       <div className="columns is-multiline">
         <div className="column is-4-desktop">
@@ -68,6 +67,7 @@ const Statistics = ({ userId, userName }) => {
 };
 
 Statistics.propTypes = {
+  contributions: shape({}),
   userId: string.isRequired,
   userName: string.isRequired,
 };
