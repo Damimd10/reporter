@@ -1,8 +1,9 @@
 import React from 'react';
+import { string } from 'prop-types';
 
 import Skeleton from '@yisheng90/react-loading';
 
-const Statistics = () => {
+const Statistics = ({ userId, userName }) => {
   return (
     <section className="section container has-text-centered is-paddingless">
       <div className="block">
@@ -29,6 +30,11 @@ const Statistics = () => {
       </div>
     </section>
   );
+};
+
+Statistics.propTypes = {
+  userId: string.isRequired,
+  userName: string.isRequired,
 };
 
 export default Statistics;

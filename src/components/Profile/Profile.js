@@ -11,7 +11,7 @@ import './profile.css';
 
 const ProfileLoading = () => (
   <>
-    <div className="avatar">
+    <div className="avatar avatar-container">
       <Skeleton circle width={200} />
     </div>
     <Skeleton height="3rem" />
@@ -28,47 +28,59 @@ const ProfileLoading = () => (
   </>
 );
 
-const Profile = ({ isLoading, user }) => {
-  if (isLoading) return <ProfileLoading />;
+const Profile = ({ data, loading }) => {
+  if (loading) return <ProfileLoading />;
+  if (!data) return null;
+
+  const {
+    user: {
+      avatarUrl,
+      bio,
+      createdAt,
+      followers,
+      following,
+      name,
+      pinnedRepositories,
+      repositories,
+      starredRepositories,
+    },
+  } = data;
 
   return (
     <section className="section container has-text-centered is-paddingless">
       <div className="profile column is-narrow is-paddingless">
         <section className="profile is-centered">
-          <div className="avatar">
-            <figure className="image is-480x480">
-              <img alt="Avatar" className="is-rounded" src={user.avatarUrl} />
+          <div className="avatar avatar-container">
+            <figure className="image is-256x256">
+              <img alt="Avatar" className="is-rounded" src={avatarUrl} />
             </figure>
           </div>
-          <span className="is-size-1">{user.name}</span>
-          <span className="is-size-6">{user.bio}</span>
+          <span className="is-size-1">{name}</span>
+          <span className="is-size-6">{bio}</span>
           <div className="columns follow-info">
-            <div className="column is-paddingless">
+            <div className="column is-paddingless follow-boxes">
               <FollowBox
                 icon="fas fa-user-check"
-                quantity={user.followers.totalCount}
+                quantity={followers.totalCount}
                 title="Followers"
               />
               <FollowBox
                 icon="fas fa-user-plus"
-                quanitity={user.following.totalCount}
+                quantity={following.totalCount}
                 title="Following"
               />
             </div>
           </div>
           <div className="profile-info-container">
-            <InfoBox
-              icon="fas fa-history"
-              title={`Joined Github ${moment(user.createdAt).fromNow()}`}
-            />
-            <InfoBox icon="fab fa-github" title={`${user.repositories.totalCount} Repositories`} />
+            <InfoBox icon="fas fa-history" title={`Joined Github ${moment(createdAt).fromNow()}`} />
+            <InfoBox icon="fab fa-github" title={`${repositories.totalCount} Repositories`} />
             <InfoBox
               icon="fas fa-thumbtack"
-              title={`${user.pinnedRepositories.totalCount} Pinned Repositories`}
+              title={`${pinnedRepositories.totalCount} Pinned Repositories`}
             />
             <InfoBox
               icon="fas fa-star"
-              title={`${user.starredRepositories.totalCount} Starred Repositories`}
+              title={`${starredRepositories.totalCount} Starred Repositories`}
             />
           </div>
         </section>
@@ -78,8 +90,8 @@ const Profile = ({ isLoading, user }) => {
 };
 
 Profile.propTypes = {
-  isLoading: bool.isRequired,
-  user: shape({}),
+  data: shape({}),
+  loading: bool.isRequired,
 };
 
 export default Profile;

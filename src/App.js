@@ -1,41 +1,30 @@
-import React, { useState } from 'react';
-import useSWR from 'swr';
+import React from 'react';
+import { useLazyQuery } from '@apollo/client';
 
 import Header from './components/Header';
 import Profile from './components/Profile';
 import Statistics from './components/Statistics';
 
-import client from './client';
 import { PROFILE } from './queries';
 
 import './app.css';
 
 const App = () => {
-  const [shouldFetch, setShouldFetch] = useState(false);
-  const [variables, setVariables] = useState({});
-
-  const { data } = useSWR(shouldFetch ? PROFILE : null, (query) =>
-    client.request(query, variables),
-  );
+  const [getProfile, { data, loading }] = useLazyQuery(PROFILE);
 
   const handleSearchUser = (username) => {
-    setVariables({ name: username });
-    setShouldFetch(true);
+    getProfile({ variables: { name: username } });
   };
-
-  const isLoading = shouldFetch && !data;
-
-  console.log('HERE', data);
 
   return (
     <div className="app-container">
       <Header onSearchUser={handleSearchUser} />
       <div className="app-content columns">
         <div className="column is-3">
-          {isLoading || (data && <Profile loading={isLoading} user={data && data.user} />)}
+          <Profile loading={loading} data={data} />
         </div>
         <div className="column">
-          <Statistics />
+          {loading || (data && <Statistics userId={data.user.id} userName={data.user.login} />)}
         </div>
       </div>
     </div>

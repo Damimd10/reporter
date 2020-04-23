@@ -1,4 +1,6 @@
-export const PROFILE = `
+import { gql } from '@apollo/client';
+
+export const PROFILE = gql`
   query($name: String!) {
     user(login: $name) {
       avatarUrl
@@ -40,4 +42,43 @@ export const PROFILE = `
   }
 `;
 
-export const STATISTICS = '';
+export const STATISTICS = gql`
+  query($name: String!, $id: ID!, $cursor: String) {
+    user(login: $name) {
+      id
+      repositories(
+        first: 100
+        after: $cursor
+        orderBy: { direction: DESC, field: STARGAZERS }
+        ownerAffiliations: OWNER
+      ) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        edges {
+          node {
+            name
+            isFork
+            primaryLanguage {
+              name
+              color
+            }
+            stargazers {
+              totalCount
+            }
+            masterBranch: ref(qualifiedName: "master") {
+              target {
+                ... on Commit {
+                  history(first: 0, author: { id: $id }) {
+                    totalCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
