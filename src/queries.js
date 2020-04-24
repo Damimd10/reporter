@@ -58,6 +58,9 @@ export const STATISTICS = gql`
         }
         edges {
           node {
+            owner {
+              login
+            }
             name
             isFork
             primaryLanguage {

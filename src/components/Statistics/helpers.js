@@ -76,7 +76,7 @@ const createConfiguration = (user, legendPosition) => ({
         boxWidth: 10,
       },
     },
-    onClick: (...args) => createLink(user, args[1])
+    // onClick: (...args) => createLink(user, args[1])
   },
 });
 
@@ -93,12 +93,12 @@ const getInfo = (data, param) =>
   )(data);
 
 const createData = (data, from, currentProp) => {
-  const { labels, values } = getInfo(prop(from, data), currentProp);
+  const info = getInfo(prop(from, data), currentProp);
   return {
-    labels,
+    labels: info.labels,
     datasets: [
       {
-        data: values,
+        data: info.values,
         backgroundColor: DEFAULT_COLORS,
       },
     ],

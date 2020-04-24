@@ -1,6 +1,6 @@
 import React from 'react';
 import { string, shape } from 'prop-types';
-import { pathOr, reduce } from 'ramda';
+import { compose, filter, pathOr, reduce } from 'ramda';
 
 import { Doughnut, Line } from 'react-chartjs-2';
 import Skeleton from '@yisheng90/react-loading';
@@ -44,7 +44,13 @@ const Statistics = ({ contributions, userId, userName }) => {
 
   const commonConfiguration = createConfiguration(userName);
 
-  const dataSet = reduce(getStatistics, {}, pathOr([], ['user', 'repositories', 'edges'], data));
+  const filterByOwner = compose(
+    reduce(getStatistics, {}),
+    filter(edge => !edge.node.isFork),
+    pathOr([], ['user', 'repositories', 'edges']),
+  )(data);
+
+  const dataSet = filterByOwner;
 
   const repositoriesPerLanguage = createData(dataSet, 'languages', 'repositories');
   const starsPerLanguage = createData(dataSet, 'languages', 'stars');

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { pathOr } from 'ramda';
 
@@ -6,7 +6,6 @@ import updateQuery from './updateQuery';
 import { STATISTICS } from '../../queries';
 
 const useRepositories = ({ userId, userName }) => {
-  const [repositories, setRepositories] = useState(null);
   const { data, fetchMore, loading } = useQuery(STATISTICS, {
     variables: { id: userId, name: userName },
     notifyOnNetworkStatusChange: true,
@@ -14,7 +13,7 @@ const useRepositories = ({ userId, userName }) => {
 
   const { hasNextPage, endCursor } = pathOr(false, ['user', 'repositories', 'pageInfo'], data);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (hasNextPage) {
       fetchMore({
         query: STATISTICS,
@@ -26,17 +25,12 @@ const useRepositories = ({ userId, userName }) => {
         updateQuery,
       });
     }
-  }, [data, endCursor, fetchMore, hasNextPage, userId, userName]);
+  }, [endCursor, hasNextPage]);
 
-  useEffect(() => {
-    if (!hasNextPage) {
-      const parsedData = (pathOr([], ['user', 'repositories', 'edges']), data);
-      setRepositories(parsedData);
-    }
-  }, [data, hasNextPage])
+  const parsedData = (pathOr([], ['user', 'repositories', 'edges']), data);
 
-  return  {
-    data: repositories,
+  return {
+    data: parsedData,
     loading,
   };
 };
