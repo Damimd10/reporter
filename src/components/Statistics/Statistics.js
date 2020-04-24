@@ -1,10 +1,12 @@
 import React from 'react';
 import { string, shape } from 'prop-types';
+import { pathOr, reduce } from 'ramda';
 
+import { Doughnut, Line } from 'react-chartjs-2';
 import Skeleton from '@yisheng90/react-loading';
 
+import { createConfiguration, createData, getContributions, getStatistics } from './helpers';
 import useRepositories from './useRepositories';
-import Contributions from './components/Contributions';
 
 const StatisticsLogin = () => (
   <section className="section container has-text-centered is-paddingless">
@@ -36,30 +38,48 @@ const StatisticsLogin = () => (
 const Statistics = ({ contributions, userId, userName }) => {
   const { data, loading } = useRepositories({ userId, userName });
 
-  if (loading) return <StatisticsLogin />
+  if (loading) return <StatisticsLogin />;
+
+  const contributionsDataSet = getContributions(contributions);
+
+  const commonConfiguration = createConfiguration(userName);
+
+  const dataSet = reduce(getStatistics, {}, pathOr([], ['user', 'repositories', 'edges'], data));
+
+  const repositoriesPerLanguage = createData(dataSet, 'languages', 'repositories');
+  const starsPerLanguage = createData(dataSet, 'languages', 'stars');
+  const commitsPerLanguage = createData(dataSet, 'languages', 'commits');
+  const starsTopTen = createData(dataSet, 'repositories', 'stars');
+  const commitsTopTen = createData(dataSet, 'repositories', 'commits');
 
   return (
     <section className="section container has-text-centered is-paddingless">
-      <div className="block" style={{ height: '400px'}}>
-        <Contributions collection={contributions} />
+      <div className="block">
+        <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
       </div>
       <div className="columns is-multiline">
         <div className="column is-4-desktop">
-          Block
+          {repositoriesPerLanguage.labels.length > 0 && (
+            <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
+          )}
         </div>
         <div className="column is-4-desktop">
-          Block
+          {starsPerLanguage.labels.length > 0 && (
+            <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
+          )}
         </div>
         <div className="column is-4-desktop">
-          Block
+          {commitsPerLanguage.labels.length > 0 && (
+            <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
+          )}
         </div>
       </div>
       <div className="columns is-multiline">
         <div className="column is-6-desktop">
-          Block
+          <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
         </div>
         <div className="column is-6-desktop">
-          Block
+          <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
         </div>
       </div>
     </section>

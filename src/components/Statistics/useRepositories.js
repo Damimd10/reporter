@@ -9,6 +9,7 @@ const useRepositories = ({ userId, userName }) => {
   const [repositories, setRepositories] = useState(null);
   const { data, fetchMore, loading } = useQuery(STATISTICS, {
     variables: { id: userId, name: userName },
+    notifyOnNetworkStatusChange: true,
   });
 
   const { hasNextPage, endCursor } = pathOr(false, ['user', 'repositories', 'pageInfo'], data);
@@ -36,7 +37,7 @@ const useRepositories = ({ userId, userName }) => {
 
   return  {
     data: repositories,
-    loading
+    loading,
   };
 };
 
