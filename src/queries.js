@@ -32,7 +32,7 @@ export const PROFILE = gql`
       pinnedRepositories {
         totalCount
       }
-      repositories(first: 0, affiliations: [OWNER]) {
+      repositories {
         totalCount
       }
       starredRepositories {
@@ -62,6 +62,7 @@ export const STATISTICS = gql`
               login
             }
             name
+            isArchived
             isFork
             primaryLanguage {
               name

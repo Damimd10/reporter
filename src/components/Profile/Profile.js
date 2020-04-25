@@ -47,7 +47,7 @@ const Profile = ({ data, loading }) => {
   } = data;
 
   return (
-    <section className="section container has-text-centered is-paddingless">
+    <section className="box section container has-text-centered layout-container">
       <div className="profile column is-narrow is-paddingless">
         <section className="profile is-centered">
           <div className="avatar avatar-container">
@@ -56,7 +56,7 @@ const Profile = ({ data, loading }) => {
             </figure>
           </div>
           <span className="is-size-1">{name}</span>
-          <span className="is-size-6">{bio}</span>
+          <span className="is-size-6 bio-text">{bio}</span>
           <div className="columns follow-info">
             <div className="column is-paddingless follow-boxes">
               <FollowBox

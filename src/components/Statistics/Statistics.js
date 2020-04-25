@@ -6,7 +6,6 @@ import { Doughnut, Line } from 'react-chartjs-2';
 import Skeleton from '@yisheng90/react-loading';
 
 import { createConfiguration, createData, getContributions, getStatistics } from './helpers';
-import useRepositories from './useRepositories';
 
 const StatisticsLogin = () => (
   <section className="section container has-text-centered is-paddingless">
@@ -35,10 +34,8 @@ const StatisticsLogin = () => (
   </section>
 );
 
-const Statistics = ({ contributions, userId, userName }) => {
-  const { data, loading } = useRepositories({ userId, userName });
-
-  if (loading) return <StatisticsLogin />;
+const Statistics = ({ contributions, stats, userName }) => {
+  // if (loading) return <StatisticsLogin />;
 
   const contributionsDataSet = getContributions(contributions);
 
@@ -46,9 +43,10 @@ const Statistics = ({ contributions, userId, userName }) => {
 
   const filterByOwner = compose(
     reduce(getStatistics, {}),
-    filter(edge => !edge.node.isFork),
+    filter(({ node }) => !node.isArchived),
+    filter(({ node }) => !node.isFork),
     pathOr([], ['user', 'repositories', 'edges']),
-  )(data);
+  )(stats);
 
   const dataSet = filterByOwner;
 
@@ -59,32 +57,32 @@ const Statistics = ({ contributions, userId, userName }) => {
   const commitsTopTen = createData(dataSet, 'repositories', 'commits');
 
   return (
-    <section className="section container has-text-centered is-paddingless">
-      <div className="block">
+    <section className="box section container has-text-centered is-paddingless layout-container">
+      <div className="block chart-section">
         <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
       </div>
-      <div className="columns is-multiline">
+      <div className="columns is-multiline chart-section">
         <div className="column is-4-desktop">
           {repositoriesPerLanguage.labels.length > 0 && (
             <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
           )}
         </div>
-        <div className="column is-4-desktop">
+        <div className="column is-4-desktop chart-section">
           {starsPerLanguage.labels.length > 0 && (
             <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
           )}
         </div>
-        <div className="column is-4-desktop">
+        <div className="column is-4-desktop chart-section">
           {commitsPerLanguage.labels.length > 0 && (
             <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
           )}
         </div>
       </div>
       <div className="columns is-multiline">
-        <div className="column is-6-desktop">
+        <div className="column is-6-desktop chart-section">
           <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
         </div>
-        <div className="column is-6-desktop">
+        <div className="column is-6-desktop chart-section">
           <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
         </div>
       </div>
@@ -93,8 +91,8 @@ const Statistics = ({ contributions, userId, userName }) => {
 };
 
 Statistics.propTypes = {
-  contributions: shape({}),
-  userId: string.isRequired,
+  contributions: shape({}).isRequired,
+  stats: shape({}).isRequired,
   userName: string.isRequired,
 };
 
