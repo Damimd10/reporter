@@ -3,35 +3,38 @@ import { string, shape } from 'prop-types';
 import { compose, filter, pathOr, reduce } from 'ramda';
 
 import { Doughnut, Line } from 'react-chartjs-2';
+import Fade from 'react-reveal';
 import Skeleton from '@yisheng90/react-loading';
 
 import { createConfiguration, createData, getContributions, getStatistics } from './helpers';
 
 const StatisticsLogin = () => (
-  <section className="section container has-text-centered is-paddingless">
-    <div className="block">
-      <Skeleton height="20rem" />
-    </div>
-    <div className="columns is-multiline">
-      <div className="column is-4-desktop">
-        <Skeleton height="10rem" />
+  <Fade>
+    <section className="section container has-text-centered is-paddingless">
+      <div className="block">
+        <Skeleton height="20rem" />
       </div>
-      <div className="column is-4-desktop">
-        <Skeleton height="10rem" />
+      <div className="columns is-multiline">
+        <div className="column is-4-desktop">
+          <Skeleton height="10rem" />
+        </div>
+        <div className="column is-4-desktop">
+          <Skeleton height="10rem" />
+        </div>
+        <div className="column is-4-desktop">
+          <Skeleton height="10rem" />
+        </div>
       </div>
-      <div className="column is-4-desktop">
-        <Skeleton height="10rem" />
+      <div className="columns is-multiline">
+        <div className="column is-6-desktop">
+          <Skeleton height="15rem" />
+        </div>
+        <div className="column is-6-desktop">
+          <Skeleton height="15rem" />
+        </div>
       </div>
-    </div>
-    <div className="columns is-multiline">
-      <div className="column is-6-desktop">
-        <Skeleton height="15rem" />
-      </div>
-      <div className="column is-6-desktop">
-        <Skeleton height="15rem" />
-      </div>
-    </div>
-  </section>
+    </section>
+  </Fade>
 );
 
 const Statistics = ({ contributions, loading, stats, userName }) => {
@@ -57,36 +60,38 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
   const commitsTopTen = createData(dataSet, 'repositories', 'commits');
 
   return (
-    <section className="box section container has-text-centered is-paddingless layout-container">
-      <div className="block chart-section">
-        <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
-      </div>
-      <div className="columns is-multiline chart-section">
-        <div className="column is-4-desktop">
-          {repositoriesPerLanguage.labels.length > 0 && (
-            <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
-          )}
+    <Fade>
+      <section className="box section container has-text-centered is-paddingless layout-container">
+        <div className="block chart-section">
+          <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
         </div>
-        <div className="column is-4-desktop chart-section">
-          {starsPerLanguage.labels.length > 0 && (
-            <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
-          )}
+        <div className="columns is-multiline chart-section">
+          <div className="column is-4-desktop">
+            {repositoriesPerLanguage.labels.length > 0 && (
+              <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
+            )}
+          </div>
+          <div className="column is-4-desktop chart-section">
+            {starsPerLanguage.labels.length > 0 && (
+              <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
+            )}
+          </div>
+          <div className="column is-4-desktop chart-section">
+            {commitsPerLanguage.labels.length > 0 && (
+              <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
+            )}
+          </div>
         </div>
-        <div className="column is-4-desktop chart-section">
-          {commitsPerLanguage.labels.length > 0 && (
-            <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
-          )}
+        <div className="columns is-multiline">
+          <div className="column is-6-desktop chart-section">
+            <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
+          </div>
+          <div className="column is-6-desktop chart-section">
+            <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
+          </div>
         </div>
-      </div>
-      <div className="columns is-multiline">
-        <div className="column is-6-desktop chart-section">
-          <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
-        </div>
-        <div className="column is-6-desktop chart-section">
-          <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
-        </div>
-      </div>
-    </section>
+      </section>
+    </Fade>
   );
 };
 
