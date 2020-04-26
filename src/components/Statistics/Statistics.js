@@ -39,6 +39,7 @@ const StatisticsLogin = () => (
 
 const Statistics = ({ contributions, loading, stats, userName }) => {
   if (loading) return <StatisticsLogin />;
+  if (!userName) return null;
 
   const contributionsDataSet = getContributions(contributions);
 
