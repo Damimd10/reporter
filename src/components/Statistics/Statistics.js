@@ -34,8 +34,8 @@ const StatisticsLogin = () => (
   </section>
 );
 
-const Statistics = ({ contributions, stats, userName }) => {
-  // if (loading) return <StatisticsLogin />;
+const Statistics = ({ contributions, loading, stats, userName }) => {
+  if (loading) return <StatisticsLogin />;
 
   const contributionsDataSet = getContributions(contributions);
 

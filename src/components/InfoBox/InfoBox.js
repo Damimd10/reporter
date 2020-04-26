@@ -10,7 +10,7 @@ const InfoBox = ({ icon, title }) => (
         <span className="icon">
           <i className={`${icon} fa-2x`} />
         </span>
-        <span className="profile-info-stat is-size-5">{title}</span>
+        <span className="heading profile-info-stat is-size-6">{title}</span>
       </div>
     </div>
   </div>

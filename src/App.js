@@ -39,13 +39,12 @@ const App = () => {
       <Header onSearchUser={handleSearchUser} />
       <div className="columns">
         <Profile data={data} loading={loading || repositoriesLoading} />
-        {!repositoriesLoading && repositoriesData && (
-          <Statistics
-            stats={repositoriesData}
-            contributions={contributions}
-            userName={data.user.login}
-          />
-        )}
+        <Statistics
+          contributions={contributions}
+          loading={loading || repositoriesLoading}
+          stats={repositoriesData}
+          userName={pathOr('', ['user', 'login'], data)}
+        />
       </div>
     </div>
   );

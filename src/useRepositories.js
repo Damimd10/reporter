@@ -26,7 +26,7 @@ const useRepositories = ({ user }) => {
         updateQuery,
       });
     }
-  }, [endCursor, hasNextPage]);
+  }, [endCursor, hasNextPage, user]);
 
   const parsedData = (pathOr([], ['user', 'repositories', 'edges']), data);
 

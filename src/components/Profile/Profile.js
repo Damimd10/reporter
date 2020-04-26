@@ -10,7 +10,7 @@ import InfoBox from '../InfoBox';
 import './profile.css';
 
 const ProfileLoading = () => (
-  <>
+  <div className="column is-3">
     <div className="avatar avatar-container">
       <Skeleton circle width={200} />
     </div>
@@ -20,12 +20,9 @@ const ProfileLoading = () => (
       <div className="column is-paddingless">
         <Skeleton height="8rem" />
       </div>
-      <div className="column is-paddingless">
-        <Skeleton height="8rem" />
-      </div>
     </div>
     <Skeleton height="2rem" rows={6} />
-  </>
+  </div>
 );
 
 const Profile = ({ data, loading }) => {
@@ -72,15 +69,15 @@ const Profile = ({ data, loading }) => {
             </div>
           </div>
           <div className="profile-info-container">
-            <InfoBox icon="fas fa-history" title={`Joined Github ${moment(createdAt).fromNow()}`} />
+            <InfoBox icon="fas fa-history" title={`Joined ${moment(createdAt).fromNow()}`} />
             <InfoBox icon="fab fa-github" title={`${repositories.totalCount} Repositories`} />
             <InfoBox
               icon="fas fa-thumbtack"
-              title={`${pinnedRepositories.totalCount} Pinned Repositories`}
+              title={`${pinnedRepositories.totalCount} Pinned`}
             />
             <InfoBox
               icon="fas fa-star"
-              title={`${starredRepositories.totalCount} Starred Repositories`}
+              title={`${starredRepositories.totalCount} Starred`}
             />
           </div>
         </section>
