@@ -32,7 +32,7 @@ export const PROFILE = gql`
       pinnedRepositories {
         totalCount
       }
-      repositories {
+      repositories(ownerAffiliations: OWNER) {
         totalCount
       }
       starredRepositories {

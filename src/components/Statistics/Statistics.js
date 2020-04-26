@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, shape } from 'prop-types';
+import { bool, shape, string } from 'prop-types';
 import { compose, filter, pathOr, reduce } from 'ramda';
 
 import { Doughnut, Line } from 'react-chartjs-2';
@@ -64,20 +64,24 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
     <Fade>
       <section className="box section container has-text-centered is-paddingless layout-container">
         <div className="block chart-section">
+          <span className="heading is-size-4">Contributions in last year</span>
           <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
         </div>
         <div className="columns is-multiline chart-section">
-          <div className="column is-4-desktop">
+          <div className="column is-4-desktop chart-section">
+            <span className="heading is-size-6">Repositories Per Language</span>
             {repositoriesPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
             )}
           </div>
           <div className="column is-4-desktop chart-section">
+            <span className="heading is-size-6">Stars Per Language</span>
             {starsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
             )}
           </div>
           <div className="column is-4-desktop chart-section">
+            <span className="heading is-size-6">Commits Per Language</span>
             {commitsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
             )}
@@ -85,9 +89,11 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
         </div>
         <div className="columns is-multiline">
           <div className="column is-6-desktop chart-section">
+            <span className="heading is-size-5">Top 10 Stars Repo</span>
             <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
           </div>
           <div className="column is-6-desktop chart-section">
+            <span className="heading is-size-5">Top 10 Commits Repo</span>
             <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
           </div>
         </div>
@@ -98,6 +104,7 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
 
 Statistics.propTypes = {
   contributions: shape({}).isRequired,
+  loading: bool.isRequired,
   stats: shape({}).isRequired,
   userName: string.isRequired,
 };
