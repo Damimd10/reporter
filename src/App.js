@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { pathOr, propOr } from 'ramda';
 import { useLazyQuery } from '@apollo/client';
 
+import Error from './components/Error';
 import Header from './components/Header';
 import Profile from './components/Profile';
 import Statistics from './components/Statistics';
@@ -13,7 +14,7 @@ import { PROFILE } from './queries';
 import './app.css';
 
 const App = () => {
-  const [getProfile, { data, loading }] = useLazyQuery(PROFILE);
+  const [getProfile, { data, error, loading }] = useLazyQuery(PROFILE);
   const { repositoriesLoading, repositoriesData, getStats } = useRepositories({
     user: propOr({}, 'user', data),
   });
@@ -38,13 +39,19 @@ const App = () => {
     <div className="app-container">
       <Header onSearchUser={handleSearchUser} />
       <div className="columns">
-        <Profile data={data} loading={loading || repositoriesLoading} />
-        <Statistics
-          contributions={contributions}
-          loading={loading || repositoriesLoading}
-          stats={repositoriesData}
-          userName={pathOr('', ['user', 'login'], data)}
-        />
+        {error ? (
+          <Error />
+        ) : (
+          <>
+            <Profile data={data} loading={loading || repositoriesLoading} />
+            <Statistics
+              contributions={contributions}
+              loading={loading || repositoriesLoading}
+              stats={repositoriesData}
+              userName={pathOr('', ['user', 'login'], data)}
+            />
+          </>
+        )}
       </div>
     </div>
   );
