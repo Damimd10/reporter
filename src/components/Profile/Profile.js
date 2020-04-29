@@ -40,7 +40,7 @@ const Profile = ({ data, loading }) => {
       followers,
       following,
       name,
-      pinnedRepositories,
+      pinnedItems,
       repositories,
       starredRepositories,
     },
@@ -75,7 +75,7 @@ const Profile = ({ data, loading }) => {
             <div className="profile-info-container">
               <InfoBox icon="fas fa-history" title={`Joined ${moment(createdAt).fromNow()}`} />
               <InfoBox icon="fab fa-github" title={`${repositories.totalCount} Repositories`} />
-              <InfoBox icon="fas fa-thumbtack" title={`${pinnedRepositories.totalCount} Pinned`} />
+              <InfoBox icon="fas fa-thumbtack" title={`${pinnedItems.totalCount} Pinned`} />
               <InfoBox icon="fas fa-star" title={`${starredRepositories.totalCount} Starred`} />
             </div>
           </section>

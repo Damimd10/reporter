@@ -29,7 +29,7 @@ export const PROFILE = gql`
       following {
         totalCount
       }
-      pinnedRepositories {
+      pinnedItems(types: REPOSITORY) {
         totalCount
       }
       repositories(ownerAffiliations: OWNER) {
