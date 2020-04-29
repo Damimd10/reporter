@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { func } from 'prop-types';
 
 import './header.css';
 
 const Header = ({ onSearchUser }) => {
+  const inputElement = useRef(null);
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    inputElement.current.focus();
+  }, []);
 
   const handleChange = (e) => setQuery(e.target.value);
 
@@ -14,7 +19,10 @@ const Header = ({ onSearchUser }) => {
     }
   };
 
-  const handleRemove = () => setQuery('');
+  const handleRemove = () => {
+    setQuery('');
+    inputElement.current.focus();
+  }
 
   return (
     <header className="section">
@@ -25,6 +33,7 @@ const Header = ({ onSearchUser }) => {
             onChange={handleChange}
             onKeyPress={handleKeyPress}
             placeholder="Who are you looking for?"
+            ref={inputElement}
             type="text"
             value={query}
           />
