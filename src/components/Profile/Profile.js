@@ -56,7 +56,7 @@ const Profile = ({ data, loading }) => {
                 <img alt="Avatar" className="is-rounded" src={avatarUrl} />
               </figure>
             </div>
-            <span className="is-size-1">{name}</span>
+            <span className="is-size-2">{name}</span>
             <span className="is-size-6 bio-text">{bio}</span>
             <div className="columns follow-info">
               <div className="column is-paddingless follow-boxes">

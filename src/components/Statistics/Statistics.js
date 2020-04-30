@@ -43,7 +43,7 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
 
   const contributionsDataSet = getContributions(contributions);
 
-  const commonConfiguration = createConfiguration(userName);
+  const commonConfiguration = createConfiguration({ userName, hasLegend: true });
 
   const filterByOwner = compose(
     reduce(getStatistics, {}),
@@ -63,25 +63,25 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
   return (
     <Fade>
       <section className="box section container has-text-centered is-paddingless layout-container">
-        <div className="block chart-section">
-          <span className="heading is-size-4">Contributions in last year</span>
+        <div className="block chart-section contributions-chart">
+          <span className="heading is-size-4 chart-title">Contributions in last year</span>
           <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
         </div>
         <div className="columns is-multiline chart-section">
           <div className="column is-4-desktop chart-section">
-            <span className="heading is-size-6">Repositories Per Language</span>
+            <span className="heading is-size-6 chart-title">Repositories Per Language</span>
             {repositoriesPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
             )}
           </div>
           <div className="column is-4-desktop chart-section">
-            <span className="heading is-size-6">Stars Per Language</span>
+            <span className="heading is-size-6 chart-title">Stars Per Language</span>
             {starsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
             )}
           </div>
           <div className="column is-4-desktop chart-section">
-            <span className="heading is-size-6">Commits Per Language</span>
+            <span className="heading is-size-6 chart-title">Commits Per Language</span>
             {commitsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
             )}
@@ -89,11 +89,11 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
         </div>
         <div className="columns is-multiline">
           <div className="column is-6-desktop chart-section">
-            <span className="heading is-size-5">Top 10 Stars Repo</span>
+            <span className="heading is-size-5 chart-title">Top 10 Stars Repo</span>
             <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
           </div>
           <div className="column is-6-desktop chart-section">
-            <span className="heading is-size-5">Top 10 Commits Repo</span>
+            <span className="heading is-size-5 chart-title">Top 10 Commits Repo</span>
             <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
           </div>
         </div>

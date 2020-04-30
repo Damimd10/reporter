@@ -8,7 +8,7 @@ const InfoBox = ({ icon, title }) => (
     <div className="level-left">
       <div className="level-item">
         <span className="icon">
-          <i className={`${icon} fa-2x`} />
+          <i className={`${icon} fa-lg`} />
         </span>
         <span className="heading profile-info-stat is-size-6">{title}</span>
       </div>

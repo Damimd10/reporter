@@ -23,9 +23,18 @@ body {
 }
 
 .bio-text {
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .chart-section {
   margin: 1rem 0;
+}
+
+.chart-title {
+  margin-bottom: 1rem !important;
+}
+
+.contributions-chart {
+  position: relative;
+  height: 400px;
 }
