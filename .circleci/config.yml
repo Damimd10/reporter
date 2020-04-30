@@ -21,9 +21,4 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: false
-          severity-threshold: high
-
       - run: npm lint
