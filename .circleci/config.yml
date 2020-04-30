@@ -5,20 +5,25 @@ jobs:
       - image: circleci/node:12.9.1-browsers
 
     working_directory: ~/repo
-steps:
+
+    steps:
       - checkout
 
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
 
       - run: npm install
 
       - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: false
+          severity-threshold: high
 
       - run: npm lint
-      - run: npm test
