@@ -29,4 +29,4 @@ jobs:
 
       - run:
           name: Install Now CLI
-          command: sudp npm install --global --unsafe-perm now
+          command: sudo npm install --global --unsafe-perm now
