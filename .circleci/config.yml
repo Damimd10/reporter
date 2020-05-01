@@ -24,6 +24,8 @@ jobs:
       - run: npm run lint
 
   deploy:
+    machine:
+      enabled: true
     steps:
       - run:
           name: Install Now CLI
