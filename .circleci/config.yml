@@ -26,7 +26,3 @@ jobs:
       - run:
         name: Linting
         command: npm run lint
-
-      - run:
-        name: Install Now CLI
-        command: sudo npm install --global --unsafe-perm now
