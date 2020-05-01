@@ -35,13 +35,5 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --local-config .now/now.production.json
-                  now --token $ZEIT_TOKEN --local-config .now/now.production.json alias
-              elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  now --token $ZEIT_TOKEN --local-config .now/now.staging.json
-                  now --token $ZEIT_TOKEN --local-config .now/now.staging.json alias
-              else
-                  ./.now/now.feature.sh
-                  now --token $ZEIT_TOKEN --local-config .now/now.feature.json
-                  now --token $ZEIT_TOKEN --local-config .now/now.feature.json alias
+                  now --token $ZEIT_TOKEN --prod
               fi
