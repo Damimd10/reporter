@@ -1,0 +1,8 @@
+{
+  "name": "github-reporter-production",
+  "type": "npm",
+  "forwardNpm": true,
+  "alias": [
+    "github-repoter.now.sh"
+  ]
+}
