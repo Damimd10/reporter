@@ -28,7 +28,9 @@ jobs:
         command: npm run lint
 
   deploy:
+    working_directory: ~/repo
     steps:
+      - checkout
       - run:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
