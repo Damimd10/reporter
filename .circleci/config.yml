@@ -33,7 +33,7 @@ jobs:
 
       - run:
           name: Checking env
-          command: echo $ZEIT_TOKEN
+          command: echo ${CIRCLE_BRANCH}
 
       - deploy:
           name: Deploy & Alias
