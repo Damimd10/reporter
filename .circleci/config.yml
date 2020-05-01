@@ -26,3 +26,9 @@ jobs:
       - run:
           name: Linting
           command: npm run lint
+
+  deploy:
+    steps:
+      - run:
+          name: Install Now CLI
+          command: sudp npm install --global --unsafe-perm now
