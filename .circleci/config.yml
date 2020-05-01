@@ -14,15 +14,11 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
 
-      - run:
-        name: Install dependencies
-        command: npm install
+      - run: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run:
-        name: Linting
-        command: npm run lint
+      - run: npm run lint
