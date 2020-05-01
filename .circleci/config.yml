@@ -14,18 +14,20 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
 
-      - run: npm install
+      - run:
+        name: Install dependencies
+        command: npm install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run lint
+      - run:
+        name: Linting
+        command: npm run lint
 
   deploy:
-    machine:
-      enabled: true
     steps:
       - run:
           name: Install Now CLI
