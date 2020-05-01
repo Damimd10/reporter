@@ -33,11 +33,11 @@ jobs:
 
       - run:
           name: Checking env
-          command: echo ${CIRCLE_BRANCH}
+          command: echo 'export ${CIRCLE_BRANCH}' >> $BASH_ENV ${CIRCLE_BRANCH};
 
       - deploy:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  yes YES now -p -t $ZEIT_TOKEN
+                  now -p -t $ZEIT_TOKEN
               fi
