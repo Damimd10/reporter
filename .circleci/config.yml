@@ -39,5 +39,5 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now -p -t $ZEIT_TOKEN
+                  yes YES now -p -t $ZEIT_TOKEN
               fi
