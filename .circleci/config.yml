@@ -31,10 +31,13 @@ jobs:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
 
+      - run:
+          name: Checking env
+          command: echo $ZEIT_TOKEN
+
       - deploy:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  echo $ZEIT_TOKEN
                   now -p -t $ZEIT_TOKEN
               fi
