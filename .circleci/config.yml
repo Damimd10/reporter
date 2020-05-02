@@ -31,14 +31,12 @@ jobs:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
 
-      - run:
-          name: "What token?"
-          command: echo ${ZEIT_TOKEN}
-
-      - deploy:
+  deploy:
+    <<: *defaults
+    steps:
+      - run
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token ${ZEIT_TOKEN} --local-config .now/now.production.json
-                  now --token ${ZEIT_TOKEN} --local-config .now/now.production.json alias
+                  now --token $ZEIT_TOKEN --prod
               fi
