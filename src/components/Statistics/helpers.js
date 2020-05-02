@@ -65,7 +65,7 @@ const createLink = (user, data) => {
   return window.open(redirectByLanguage, '_blank');
 };
 
-const createConfiguration = ({ user, options }) => ({
+const createConfiguration = ({ userName, options }) => ({
   options: {
     ...DEFAULT_OPTIONS,
     legend: {
@@ -77,7 +77,7 @@ const createConfiguration = ({ user, options }) => ({
       },
     },
     ...options,
-    // onClick: (...args) => createLink(user, args[1])
+    onClick: (...args) => createLink(userName, args[1])
   },
 });
 

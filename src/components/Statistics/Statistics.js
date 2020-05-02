@@ -95,11 +95,11 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
         <div className="columns is-multiline">
           <div className="column is-6-desktop chart-section">
             <span className="heading is-size-5 chart-title">Top 10 Stars Repo</span>
-            <Doughnut id="by-language" data={starsTopTen} {...commonConfiguration} />
+            <Doughnut id="by-repository" data={starsTopTen} {...commonConfiguration} />
           </div>
           <div className="column is-6-desktop chart-section">
             <span className="heading is-size-5 chart-title">Top 10 Commits Repo</span>
-            <Doughnut id="by-language" data={commitsTopTen} {...commonConfiguration} />
+            <Doughnut id="by-repository" data={commitsTopTen} {...commonConfiguration} />
           </div>
         </div>
       </section>
