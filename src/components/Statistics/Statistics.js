@@ -48,7 +48,7 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
     options: { maintainAspectRatio: false },
   });
 
-  const commonConfiguration = createConfiguration({ userName, hasLegend: true });
+  const commonConfiguration = createConfiguration({ userName });
 
   const filterByOwner = compose(
     reduce(getStatistics, {}),

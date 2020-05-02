@@ -65,12 +65,11 @@ const createLink = (user, data) => {
   return window.open(redirectByLanguage, '_blank');
 };
 
-const createConfiguration = ({ user, options, legendPosition, hasLegend }) => ({
+const createConfiguration = ({ user, options }) => ({
   options: {
     ...DEFAULT_OPTIONS,
     legend: {
-      display: hasLegend,
-      position: legendPosition || 'bottom',
+      position: 'left',
       labels: {
         fontSize: 10,
         padding: 8,
