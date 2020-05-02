@@ -43,6 +43,11 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
 
   const contributionsDataSet = getContributions(contributions);
 
+  const contributionConfiguration = createConfiguration({
+    userName,
+    options: { maintainAspectRatio: false },
+  });
+
   const commonConfiguration = createConfiguration({ userName, hasLegend: true });
 
   const filterByOwner = compose(
@@ -65,7 +70,7 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
       <section className="box section container has-text-centered is-paddingless layout-container">
         <div className="block chart-section contributions-chart">
           <span className="heading is-size-4 chart-title">Contributions in last year</span>
-          <Line id="contributions" data={contributionsDataSet} {...commonConfiguration} />
+          <Line id="contributions" data={contributionsDataSet} {...contributionConfiguration} />
         </div>
         <div className="columns is-multiline chart-section">
           <div className="column is-4-desktop chart-section">

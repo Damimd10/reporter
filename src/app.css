@@ -36,5 +36,6 @@ body {
 
 .contributions-chart {
   position: relative;
-  height: 400px;
+  height: 200px;
+  margin-bottom: 4rem !important;
 }
