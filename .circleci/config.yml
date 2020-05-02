@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.0
 jobs:
   build:
     docker:
@@ -31,8 +31,6 @@ jobs:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
 
-  deploy:
-    steps:
       - run:
           name: Deploy & Alias
           command: |
