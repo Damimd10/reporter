@@ -35,5 +35,5 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --prod --confirm
+                  now --token $ZEIT_TOKEN --prod --scope U5Xl39s8CXc0G4aHyVLC3s0t --confirm
               fi
