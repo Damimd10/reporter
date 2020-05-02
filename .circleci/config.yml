@@ -33,7 +33,7 @@ jobs:
 
   deploy:
     steps:
-      - run
+      - run:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
