@@ -44,8 +44,9 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
   const contributionsDataSet = getContributions(contributions);
 
   const contributionConfiguration = createConfiguration({
-    userName,
+    legendOptions: { position: 'bottom' },
     options: { maintainAspectRatio: false },
+    userName,
   });
 
   const commonConfiguration = createConfiguration({ userName });
