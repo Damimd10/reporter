@@ -32,8 +32,8 @@ jobs:
           command: sudo npm install --global --unsafe-perm now
 
       - run:
-          name: "What branch am I on?"
-          command: echo ${CIRCLE_BRANCH}
+          name: "What token?"
+          command: echo ${ZEIT_TOKEN}
 
       - deploy:
           name: Deploy & Alias
