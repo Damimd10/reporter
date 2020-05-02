@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:12.9.1-browsers
 
-    working_directory: ~/repo
+    working_directory: ~/github-reporter
 
     steps:
       - checkout
@@ -35,5 +35,5 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --prod --scope U5Xl39s8CXc0G4aHyVLC3s0t --confirm
+                  now --token $ZEIT_TOKEN --prod --confirm
               fi
