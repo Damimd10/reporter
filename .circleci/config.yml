@@ -32,7 +32,6 @@ jobs:
           command: sudo npm install --global --unsafe-perm now
 
   deploy:
-    <<: *defaults
     steps:
       - run
           name: Deploy & Alias
