@@ -39,5 +39,6 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now -p --force --no-clipboard -t ${ZEIT_TOKEN}
+                  now --token ${ZEIT_TOKEN} --local-config .now/now.production.json
+                  now --token ${ZEIT_TOKEN} --local-config .now/now.production.json alias
               fi
