@@ -32,8 +32,8 @@ jobs:
           command: sudo npm install --global --unsafe-perm now
 
       - run:
-          name: Checking env
-          command: echo 'export ${CIRCLE_BRANCH}' >> $BASH_ENV ${CIRCLE_BRANCH};
+          name: "What branch am I on?"
+          command: echo ${CIRCLE_BRANCH}
 
       - deploy:
           name: Deploy & Alias
