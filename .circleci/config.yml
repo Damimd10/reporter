@@ -64,6 +64,8 @@ jobs:
           command: npm run lint --max-warnings=5
 
   deploy:
+    working_directory: ~/github-reporter
+
     docker:
       - image: circleci/node:12.9.1-browsers
 
@@ -79,11 +81,11 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  cd github-reporter && npm run ci:deploy:production
+                  npm run ci:deploy:production
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  cd github-reporter && npm run ci:deploy:stage
+                  npm run ci:deploy:stage
               else
-                  cd github-reporter npm run ci:deploy:develop
+                  npm run ci:deploy:develop
               fi
 
 workflows:
