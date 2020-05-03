@@ -1,5 +1,28 @@
 version: 2.0
 jobs:
+  install:
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    steps:
+      - checkout
+
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+        name: Install Dependencies
+        command: npm install
+
   build:
     docker:
       - image: circleci/node:12.9.1-browsers
@@ -9,33 +32,30 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
+      - run:
+        name: Build
+        command: npm run build
+
+  lint:
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    steps:
+      - checkout
 
       - run:
-          name: Install Dependencies
-          command: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-          name: Linting
-          command: npm run lint --max-warnings=5
-
-      - run:
-          name: Install Now CLI
-          command: sudo npm install --global --unsafe-perm now
+        name: Linting
+        command: npm run lint --max-warnings=5
 
   deploy:
     docker:
       - image: circleci/node:12.9.1-browsers
 
     steps:
+      - run:
+        name: Install Now CLI
+        command: sudo npm install --global --unsafe-perm now
+
       - run:
           name: Deploy & Alias
           command: |
@@ -45,12 +65,21 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  install-build-lint-deploy:
     jobs:
-      - build
-      - deploy:
+      - install
+      - build:
+          requires:
+            - install
+      - lint
+          requires:
+            - install
+      - deploy
           requires:
             - build
+            - lint
           filters:
             branches:
-              only: master
+              only:
+                - develop
+                - master
