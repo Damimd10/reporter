@@ -20,23 +20,12 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-        name: Install Dependencies
-        command: npm install
+          name: Install Dependencies
+          command: npm install
 
   build:
-    docker:
-      - image: circleci/node:12.9.1-browsers
-
     working_directory: ~/github-reporter
 
-    steps:
-      - checkout
-
-      - run:
-        name: Build
-        command: npm run build
-
-  lint:
     docker:
       - image: circleci/node:12.9.1-browsers
 
@@ -44,8 +33,21 @@ jobs:
       - checkout
 
       - run:
-        name: Linting
-        command: npm run lint --max-warnings=5
+          name: Build
+          command: npm run build
+
+  lint:
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    steps:
+      - checkout
+
+      - run:
+          name: Linting
+          command: npm run lint --max-warnings=5
 
   deploy:
     docker:
@@ -53,8 +55,8 @@ jobs:
 
     steps:
       - run:
-        name: Install Now CLI
-        command: sudo npm install --global --unsafe-perm now
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
 
       - run:
           name: Deploy & Alias
