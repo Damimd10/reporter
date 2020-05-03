@@ -71,7 +71,7 @@ workflows:
       - build:
           requires:
             - install
-            - lint
+      - lint:
           requires:
             - install
       - deploy:
