@@ -32,6 +32,9 @@ jobs:
           command: sudo npm install --global --unsafe-perm now
 
   deploy:
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
     steps:
       - run:
           name: Deploy & Alias
