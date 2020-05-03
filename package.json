@@ -30,7 +30,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "npx prettier --write",
-    "lint": "eslint src/*.js --fix-dry-run"
+    "lint": "eslint src/*.js --fix-dry-run",
+    "ci:deploy:production": "now -A prod.now.json --target=production --token=$ZEIT_TOKEN --c && now alias -A prod.now.json --token=$ZEIT_TOKEN",
+    "ci:deploy:stage": "now -A staging.now.json --target=staging --token=$ZEIT_TOKEN -c && now alias -A staging.now.json --token=$ZEIT_TOKEN",
+    "ci:deploy:develop": "now --token=$ZEIT_TOKEN -c"
   },
   "husky": {
     "hooks": {

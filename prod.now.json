@@ -1,0 +1,7 @@
+{
+  "name": "github-reporter",
+  "version": 2,
+  "alias": [
+    "production-github-reporter.now.sh"
+  ]
+}
