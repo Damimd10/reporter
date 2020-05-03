@@ -18,6 +18,10 @@ jobs:
           name: Install Dependencies
           command: npm install
 
+      - persist_to_workspace:
+          root: ~/github-reporter
+          paths: ./node_modules
+
       - save_cache:
           paths:
               - node_modules
@@ -32,6 +36,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: ~/github-reporter
+
       - run:
           name: Build
           command: npm run build
@@ -45,6 +52,9 @@ jobs:
     steps:
       - checkout
 
+      - attach_workspace:
+          at: ~/github-reporter
+
       - run:
           name: Linting
           command: npm run lint --max-warnings=5
@@ -54,6 +64,9 @@ jobs:
       - image: circleci/node:12.9.1-browsers
 
     steps:
+      - attach_workspace:
+          at: ~/github-reporter
+
       - run:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
