@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Linting
-          command: npm run lint --max-warnings 5
+          command: npm run lint --max-warnings=5
 
       - run:
           name: Install Now CLI
