@@ -43,10 +43,6 @@ jobs:
           name: Build
           command: npm run build
 
-      - persist_to_workspace:
-          root: ~/github-reporter
-          paths: ./build
-
   lint:
     working_directory: ~/github-reporter
 
