@@ -25,15 +25,29 @@ jobs:
 
       - run:
           name: Linting
-          command: npm run lint
+          command: npm run lint --max-warnings 5
 
       - run:
           name: Install Now CLI
           command: sudo npm install --global --unsafe-perm now
 
+  deploy:
+    steps:
       - run:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                   now --token $ZEIT_TOKEN --prod --confirm
               fi
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy
+          required:
+            - build
+          filters:
+            branches:
+              only: master
