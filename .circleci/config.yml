@@ -79,11 +79,11 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  npm run ci:deploy:production
+                  cd github-reporter && npm run ci:deploy:production
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  npm run ci:deploy:stage
+                  cd github-reporter && npm run ci:deploy:stage
               else
-                  npm run ci:deploy:develop
+                  cd github-reporter npm run ci:deploy:develop
               fi
 
 workflows:
