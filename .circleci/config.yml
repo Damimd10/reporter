@@ -27,26 +27,6 @@ jobs:
               - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-  build:
-    working_directory: ~/github-reporter
-
-    docker:
-      - image: circleci/node:12.9.1-browsers
-
-    steps:
-      - checkout
-
-      - attach_workspace:
-          at: ~/github-reporter
-
-      - run:
-          name: Build
-          command: npm run build
-
-      - persist_to_workspace:
-          root: ~/github-reporter
-          paths: ./build
-
   lint:
     working_directory: ~/github-reporter
 
@@ -61,7 +41,7 @@ jobs:
 
       - run:
           name: Linting
-          command: npm run lint --max-warnings=5
+          command: npm run lint
 
   deploy:
     working_directory: ~/github-reporter
