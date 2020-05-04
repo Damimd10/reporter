@@ -90,6 +90,34 @@ jobs:
                   now --token $ZEIT_TOKEN --confirm
               fi
 
+  deploy-staging:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
+
+      - run:
+          name: Deploy Stage
+          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.staging.json --target production
+
+  deploy-production:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
+
+      - run:
+          name: Deploy Production
+          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.production.json --target production
+
 workflows:
   version: 2
   install-build-lint-deploy:
@@ -101,13 +129,17 @@ workflows:
       - lint:
           requires:
             - install
-      - deploy:
+      - deploy-staging:
           requires:
             - build
             - lint
           filters:
             branches:
-              only:
-                - develop
-                - master
-                - stage
+              only: master
+      - deploy-production:
+          requires:
+            - build
+            - lint
+          filters:
+            branches:
+              only: master
