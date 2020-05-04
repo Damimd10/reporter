@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { bool, shape } from 'prop-types';
 import moment from 'moment';
 
@@ -29,8 +29,12 @@ const ProfileLoading = () => (
 );
 
 const Profile = ({ data, loading }) => {
+  const [showProfile, setShowProfile] = useState(true);
+
   if (loading) return <ProfileLoading />;
   if (!data) return null;
+
+  const toggleProfile = () => setShowProfile(!showProfile);
 
   const {
     user: {
@@ -47,41 +51,52 @@ const Profile = ({ data, loading }) => {
   } = data;
 
   return (
-    <Fade>
-      <section className="box section container has-text-centered layout-container layout-profile">
-        <div className="profile column is-paddingless is-narrow">
-          <section className="profile is-centered">
-            <div className="avatar avatar-container">
-              <figure className="image is-256x256">
-                <img alt="Avatar" className="is-rounded" src={avatarUrl} />
-              </figure>
-            </div>
-            <span className="is-size-2">{name}</span>
-            <span className="is-size-6 bio-text">{bio}</span>
-            <div className="columns follow-info">
-              <div className="column is-paddingless follow-boxes">
-                <FollowBox
-                  icon="fas fa-user-check"
-                  quantity={followers.totalCount}
-                  title="Followers"
-                />
-                <FollowBox
-                  icon="fas fa-user-plus"
-                  quantity={following.totalCount}
-                  title="Following"
-                />
-              </div>
-            </div>
-            <div className="profile-info-container">
-              <InfoBox icon="fas fa-history" title={`Joined ${moment(createdAt).fromNow()}`} />
-              <InfoBox icon="fab fa-github" title={`${repositories.totalCount} Repositories`} />
-              <InfoBox icon="fas fa-thumbtack" title={`${pinnedItems.totalCount} Pinned`} />
-              <InfoBox icon="fas fa-star" title={`${starredRepositories.totalCount} Starred`} />
+    <>
+      <div className="box collapsible" onClick={toggleProfile}>
+        {showProfile ? (
+          <span className="fas fa-chevron-left fa-2x" />
+        ) : (
+          <span className="fab fa-github-alt fa-2x" />
+        )}
+      </div>
+      {showProfile && (
+        <Fade>
+          <section className="box section container has-text-centered layout-container layout-profile">
+            <div className="profile column is-paddingless is-narrow">
+              <section className="profile is-centered">
+                <div className="avatar avatar-container">
+                  <figure className="image is-256x256">
+                    <img alt="Avatar" className="is-rounded" src={avatarUrl} />
+                  </figure>
+                </div>
+                <span className="is-size-2">{name}</span>
+                <span className="is-size-6 bio-text">{bio}</span>
+                <div className="columns follow-info">
+                  <div className="column is-paddingless follow-boxes">
+                    <FollowBox
+                      icon="fas fa-user-check"
+                      quantity={followers.totalCount}
+                      title="Followers"
+                    />
+                    <FollowBox
+                      icon="fas fa-user-plus"
+                      quantity={following.totalCount}
+                      title="Following"
+                    />
+                  </div>
+                </div>
+                <div className="profile-info-container">
+                  <InfoBox icon="fas fa-history" title={`Joined ${moment(createdAt).fromNow()}`} />
+                  <InfoBox icon="fab fa-github" title={`${repositories.totalCount} Repositories`} />
+                  <InfoBox icon="fas fa-thumbtack" title={`${pinnedItems.totalCount} Pinned`} />
+                  <InfoBox icon="fas fa-star" title={`${starredRepositories.totalCount} Starred`} />
+                </div>
+              </section>
             </div>
           </section>
-        </div>
-      </section>
-    </Fade>
+        </Fade>
+      )}
+    </>
   );
 };
 
