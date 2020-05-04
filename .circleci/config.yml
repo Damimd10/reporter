@@ -27,6 +27,22 @@ jobs:
               - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+  build:
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/github-reporter
+
+      - run:
+          name: Build
+          command: npm run build
+
   lint:
     working_directory: ~/github-reporter
 
@@ -63,9 +79,9 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm --force
+                  now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm
               else
-                  now --token $ZEIT_TOKEN --local-config /now.json --confirm --force
+                  now --token $ZEIT_TOKEN --local-config /now.json --confirm
               fi
 
 workflows:
@@ -73,11 +89,15 @@ workflows:
   install-build-lint-deploy:
     jobs:
       - install
+      - build:
+          requires:
+            - install
       - lint:
           requires:
             - install
       - deploy:
           requires:
+            - build
             - lint
           filters:
             branches:
