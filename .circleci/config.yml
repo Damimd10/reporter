@@ -91,7 +91,10 @@ jobs:
               fi
 
   deploy-staging:
-    <<: *defaults
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
 
     steps:
       - checkout
@@ -105,7 +108,10 @@ jobs:
           command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.staging.json --target production
 
   deploy-production:
-    <<: *defaults
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
 
     steps:
       - checkout
