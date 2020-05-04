@@ -77,11 +77,13 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token=$ZEIT_TOKEN --confirm
+                  now --token=$ZEIT_TOKEN --confirm --target=production
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  now --confirm --token=$ZEIT_TOKEN
+                  now --confirm --token=$ZEIT_TOKEN --target=staging
+              elif [ "${CIRCLE_BRANCH}" == "stage"]; then
+                  now --token=$ZEIT_TOKEN --confirm --target=staging
               else
-                  now --confirm --token=$ZEIT_TOKEN
+                  now --confirm --token=$ZEIT_TOKEN --target=staging
               fi
 
 workflows:
