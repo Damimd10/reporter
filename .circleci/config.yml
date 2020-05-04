@@ -91,9 +91,6 @@ workflows:
   install-build-lint-deploy:
     jobs:
       - install
-      - build:
-          requires:
-            - install
       - lint:
           requires:
             - install
