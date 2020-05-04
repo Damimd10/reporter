@@ -80,8 +80,6 @@ jobs:
                   now --token=$ZEIT_TOKEN --confirm --target production
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
                   now --confirm --token=$ZEIT_TOKEN
-              elif [ "${CIRCLE_BRANCH}" == "stage"]; then
-                  now --token=$ZEIT_TOKEN --confirm --target staging
               else
                   now --confirm --token=$ZEIT_TOKEN
               fi
