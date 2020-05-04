@@ -63,33 +63,6 @@ jobs:
           name: Linting
           command: npm run lint --max-warnings=5
 
-  deploy:
-    working_directory: ~/github-reporter
-
-    docker:
-      - image: circleci/node:12.9.1-browsers
-
-    steps:
-      - attach_workspace:
-          at: ~/github-reporter
-
-      - run:
-          name: Install Now CLI
-          command: sudo npm install --global --unsafe-perm now
-
-      - run:
-          name: Deploy & Alias
-          command: |
-              if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --prod --confirm
-              elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  now --token $ZEIT_TOKEN --confirm
-              elif [ "${CIRCLE_BRANCH}" == "stage" ]; then
-                  now --token $ZEI_TOKEN --confirm --target=staging
-              else
-                  now --token $ZEIT_TOKEN --confirm
-              fi
-
   deploy-staging:
     working_directory: ~/github-reporter
 
