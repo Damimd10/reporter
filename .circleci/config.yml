@@ -77,11 +77,13 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  npm run ci:deploy:production
+                  now --token=$ZEIT_TOKEN --target production
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-                  npm run ci:deploy:stage
+                  now --token=$ZEIT_TOKEN
+              elif [ "${CIRCLE_BRANCH}" == "stage"]; then
+                  now --token=$ZEIT_TOKEN --target staging
               else
-                  npm run ci:deploy:develop
+                  now --token=$ZEIT_TOKEN
               fi
 
 workflows:
