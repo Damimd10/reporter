@@ -54,9 +54,9 @@ const Profile = ({ data, loading }) => {
     <>
       <div className="box collapsible" onClick={toggleProfile}>
         {showProfile ? (
-          <span className="fas fa-chevron-left fa-2x" />
+          <span className="fas fa-chevron-left fa-2x" data-tooltip="Show Profile" />
         ) : (
-          <span className="fab fa-github-alt fa-2x" />
+          <span className="fab fa-github-alt fa-2x" data-tooltip="Hidde Profile" />
         )}
       </div>
       {showProfile && (
