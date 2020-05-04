@@ -81,9 +81,11 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --prod --confirm
-              else
-                  now --token $ZEIT_TOKEN --confirm
+                  curl -X POST https://api.zeit.co/v1/integrations/deploy/QmVAxmwCNwUM7KXuW3t9nuXbkHShQp8BWJWFUQgv9871Dx/L5Db8KnU73
+              elif [ "${CIRCLE_BRANCH}" == "stage"]; then
+                  curl -X POST https://api.zeit.co/v1/integrations/deploy/QmVAxmwCNwUM7KXuW3t9nuXbkHShQp8BWJWFUQgv9871Dx/h1teqTf2O9
+              elif [ "${CIRCLE_BRANCH}" == "develop"]; then
+                  curl -X POST https://api.zeit.co/v1/integrations/deploy/QmVAxmwCNwUM7KXuW3t9nuXbkHShQp8BWJWFUQgv9871Dx/AkCW3eHl5O
               fi
 
 workflows:
