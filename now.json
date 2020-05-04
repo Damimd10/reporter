@@ -1,8 +1,13 @@
 {
-  "src": "package.json",
-  "use": "@now/static-build",
-  "config": {
-    "zeroConfig": true,
-    "framework": "create-react-app"
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "zeroConfig": true,
+        "framework": "create-react-app"
+      }
+    }
+  ]
 }
