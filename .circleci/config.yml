@@ -80,6 +80,8 @@ jobs:
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                   npm run ci:deploy:production
+              elif [ "${CIRCLE_BRANCH}" == "stage" ]; then
+                  npm run ci:deploy:staging
               else
                   npm run ci:deploy:feature
               fi
