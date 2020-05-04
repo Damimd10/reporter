@@ -35,7 +35,6 @@
 .collapsible {
   padding: 1rem !important;
   margin: 0 1rem;
-  border-radius: 50%;
   cursor: pointer;
   position: absolute;
   z-index: 10;

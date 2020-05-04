@@ -61,7 +61,7 @@ const Profile = ({ data, loading }) => {
       </div>
       {showProfile && (
         <Fade>
-          <section className="box section container has-text-centered layout-container layout-profile">
+          <section className="box section is-fluid container has-text-centered layout-container layout-profile">
             <div className="profile column is-paddingless is-narrow">
               <section className="profile is-centered">
                 <div className="avatar avatar-container">
