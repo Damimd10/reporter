@@ -68,7 +68,7 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
 
   return (
     <Fade>
-      <section className="box section container has-text-centered is-paddingless layout-container">
+      <section className="box section is-fluid container has-text-centered is-paddingless layout-container">
         <div className="block chart-section contributions-chart">
           <span className="heading is-size-4 chart-title">Contributions in last year</span>
           <Line id="contributions" data={contributionsDataSet} {...contributionConfiguration} />
