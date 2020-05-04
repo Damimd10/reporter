@@ -77,7 +77,7 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token=$ZEIT_TOKEN --confirm --target production
+                  now --token=$ZEIT_TOKEN --confirm
               elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
                   now --confirm --token=$ZEIT_TOKEN
               else
