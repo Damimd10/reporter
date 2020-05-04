@@ -105,7 +105,7 @@ jobs:
 
       - run:
           name: Deploy Stage
-          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.staging.json --target production
+          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.staging.json --prod --confirm
 
   deploy-production:
     working_directory: ~/github-reporter
@@ -122,7 +122,7 @@ jobs:
 
       - run:
           name: Deploy Production
-          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.production.json --target production
+          command: $(npm bin -g)/now --token $ZEIT_TOKEN --local-config now.production.json --prod --confirm
 
 workflows:
   version: 2
