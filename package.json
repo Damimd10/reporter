@@ -33,7 +33,7 @@
     "lint": "eslint src/*.js --fix-dry-run",
     "ci:deploy:feature": "now --token $ZEIT_TOKEN --local-config /now.json --confirm",
     "ci:deploy:production": "now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm",
-    "ci:deploy:staging": "now --token $ZEIT_TOKEN --local-config /staging.now.json --confirm"
+    "ci:deploy:staging": "now --token $ZEIT_TOKEN --local-config /now.json --target=staging --confirm"
   },
   "husky": {
     "hooks": {
