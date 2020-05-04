@@ -79,9 +79,9 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm
+                  npm run ci:deploy:production
               else
-                  now --token $ZEIT_TOKEN --local-config /now.json --confirm
+                  npm run ci:deploy:feature
               fi
 
 workflows:
