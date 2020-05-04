@@ -81,9 +81,9 @@ jobs:
           name: Deploy & Alias
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                  now --token $ZEIT_TOKEN --prod --confirm
+                  now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm --force
               else
-                  now --token $ZEIT_TOKEN --confirm
+                  now --token $ZEIT_TOKEN --local-config /now.json --confirm --force
               fi
 
 workflows:
