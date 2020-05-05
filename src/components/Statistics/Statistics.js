@@ -1,6 +1,7 @@
 import React from 'react';
 import { bool, shape, string } from 'prop-types';
 import { compose, filter, pathOr, reduce } from 'ramda';
+import { isMobile } from 'react-device-detect';
 
 import { Doughnut, Line } from 'react-chartjs-2';
 import Fade from 'react-reveal';
@@ -10,7 +11,10 @@ import { createConfiguration, createData, getContributions, getStatistics } from
 
 const StatisticsLogin = () => (
   <Fade>
-    <section className="section container has-text-centered is-paddingless">
+    <section
+      className="box section container has-text-centered layout-container"
+      style={{ maxWidth: '75vw' }}
+    >
       <div className="block">
         <Skeleton height="20rem" />
       </div>
@@ -49,7 +53,10 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
     userName,
   });
 
-  const commonConfiguration = createConfiguration({ userName });
+  const commonConfiguration = createConfiguration({
+    legendOptions: { position: isMobile ? 'bottom' : 'left' },
+    userName,
+  });
 
   const filterByOwner = compose(
     reduce(getStatistics, {}),
@@ -66,11 +73,13 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
   const starsTopTen = createData(dataSet, 'repositories', 'stars');
   const commitsTopTen = createData(dataSet, 'repositories', 'commits');
 
+  const maxWidth = isMobile ? '100vw' : hasProfile ? '75vw' : '100vw';
+
   return (
     <Fade>
       <section
-        className="box section container has-text-centered is-paddingless layout-container"
-        style={{ maxWidth: hasProfile ? '75vw' : '100vw' }}
+        className="box section container has-text-centered layout-container"
+        style={{ maxWidth }}
       >
         <div className="block chart-section contributions-chart">
           <span className="heading is-size-4 chart-title">Contributions in last year</span>

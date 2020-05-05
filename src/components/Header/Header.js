@@ -25,7 +25,7 @@ const Header = ({ onSearchUser }) => {
   }
 
   return (
-    <header className="section">
+    <header className="section header-container">
       <div className="field">
         <div className="control has-icons-left has-icons-right">
           <input

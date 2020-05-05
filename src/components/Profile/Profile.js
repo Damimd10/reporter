@@ -12,7 +12,7 @@ import './profile.css';
 
 const ProfileLoading = () => (
   <Fade>
-    <div className="column is-3">
+    <div className="column is-3 box section container has-text-centered layout-container">
       <div className="avatar avatar-container">
         <Skeleton circle width={200} />
       </div>
