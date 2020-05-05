@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { bool, shape } from 'prop-types';
+import React from 'react';
+import { bool, func, shape } from 'prop-types';
 import moment from 'moment';
 
 import Fade from 'react-reveal';
@@ -99,6 +99,8 @@ const Profile = ({ data, loading, toggleProfile, visible }) => {
 Profile.propTypes = {
   data: shape({}),
   loading: bool.isRequired,
+  toggleProfile: func.isRequired,
+  visible: bool.isRequired,
 };
 
 export default Profile;

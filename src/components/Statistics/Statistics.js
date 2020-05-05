@@ -113,6 +113,7 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
 
 Statistics.propTypes = {
   contributions: shape({}).isRequired,
+  hasProfile: bool.isRequired,
   loading: bool.isRequired,
   stats: shape({}).isRequired,
   userName: string.isRequired,
