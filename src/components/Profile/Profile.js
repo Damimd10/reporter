@@ -12,7 +12,7 @@ import './profile.css';
 
 const ProfileLoading = () => (
   <Fade>
-    <div className="column is-3 layout-profile">
+    <div className="column is-3">
       <div className="avatar avatar-container">
         <Skeleton circle width={200} />
       </div>
@@ -28,13 +28,9 @@ const ProfileLoading = () => (
   </Fade>
 );
 
-const Profile = ({ data, loading }) => {
-  const [showProfile, setShowProfile] = useState(true);
-
+const Profile = ({ data, loading, toggleProfile, visible }) => {
   if (loading) return <ProfileLoading />;
   if (!data) return null;
-
-  const toggleProfile = () => setShowProfile(!showProfile);
 
   const {
     user: {
@@ -52,16 +48,16 @@ const Profile = ({ data, loading }) => {
 
   return (
     <>
-      <div className="box collapsible" onClick={toggleProfile}>
-        {showProfile ? (
+      <div className="box collapsible" onClick={() => toggleProfile(!visible)}>
+        {visible ? (
           <span className="fas fa-chevron-left fa-2x" data-tooltip="Show Profile" />
         ) : (
           <span className="fab fa-github-alt fa-2x" data-tooltip="Hidde Profile" />
         )}
       </div>
-      {showProfile && (
+      {visible && (
         <Fade>
-          <section className="box section container has-text-centered layout-container layout-profile">
+          <section className="box section container has-text-centered layout-container">
             <div className="profile column is-paddingless is-narrow">
               <section className="profile is-centered">
                 <div className="avatar avatar-container">

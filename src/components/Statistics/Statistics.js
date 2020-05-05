@@ -37,7 +37,7 @@ const StatisticsLogin = () => (
   </Fade>
 );
 
-const Statistics = ({ contributions, loading, stats, userName }) => {
+const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => {
   if (loading) return <StatisticsLogin />;
   if (!userName) return null;
 
@@ -68,7 +68,10 @@ const Statistics = ({ contributions, loading, stats, userName }) => {
 
   return (
     <Fade>
-      <section className="box section is-fluid container has-text-centered is-paddingless layout-container">
+      <section
+        className="box section container has-text-centered is-paddingless layout-container"
+        style={{ maxWidth: hasProfile ? '75vw' : '100vw' }}
+      >
         <div className="block chart-section contributions-chart">
           <span className="heading is-size-4 chart-title">Contributions in last year</span>
           <Line id="contributions" data={contributionsDataSet} {...contributionConfiguration} />
