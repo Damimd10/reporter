@@ -62,9 +62,6 @@ jobs:
           name: Linting
           command: npm run lint
 
-  cypress/run:
-    record: true
-
   deploy:
     working_directory: ~/github-reporter
 
@@ -94,7 +91,7 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  install-build-deploy:
     jobs:
       - install
       - build:
@@ -103,7 +100,8 @@ workflows:
       - lint:
           requires:
             - install
-      - cypress/run
+      - cypress/run:
+          record: true
       - deploy:
           requires:
             - build
