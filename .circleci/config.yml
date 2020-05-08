@@ -1,6 +1,6 @@
 version: 2.0
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@1.0.0
 
 jobs:
   install:
@@ -63,20 +63,9 @@ jobs:
           command: npm run lint
 
   test:
-    working_directory: ~/github-reporter
-
-    docker:
-      - image: circleci/node:12.9.1-browsers
-
-    steps:
-      - checkout
-
-      - attach_workspace:
-          at: ~/github-reporter
-
-      - run:
-          name: E2E Tests
-          command: npm run ci:cypress-run
+    record: true
+    parallel: true
+    parallelism: 10
 
   deploy:
     working_directory: ~/github-reporter
