@@ -62,7 +62,8 @@ jobs:
           name: Linting
           command: npm run lint
 
-  cypress/run
+  cypress/run:
+    record: true
 
   deploy:
     working_directory: ~/github-reporter
