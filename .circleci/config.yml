@@ -100,13 +100,7 @@ workflows:
       - lint:
           requires:
             - install
-      - cypress/install
-      - cypress/run:
-          requires:
-            - cypress/install
-          record: true
-          parallel: true
-          parallelism: 2
+      - cypress/run
       - deploy:
           requires:
             - build
