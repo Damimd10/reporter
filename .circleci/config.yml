@@ -1,6 +1,6 @@
 version: 2.0
 orbs:
-  cypress: cypress-io/cypress@1.0.0
+  cypress: cypress-io/cypress@1
 
 jobs:
   install:
@@ -106,7 +106,6 @@ workflows:
           requires:
             - build
             - lint
-            - cypress/run
           filters:
             branches:
               only:
