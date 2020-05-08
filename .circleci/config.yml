@@ -62,6 +62,22 @@ jobs:
           name: Linting
           command: npm run lint
 
+  lint:
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/github-reporter
+
+      - run:
+          name: Test E2E
+          command: npm run ci:cypress-run
+
   deploy:
     working_directory: ~/github-reporter
 
@@ -100,10 +116,14 @@ workflows:
       - lint:
           requires:
             - install
+      - test:
+          requires:
+            - install
       - deploy:
           requires:
             - build
             - lint
+            - test
           filters:
             branches:
               only:
