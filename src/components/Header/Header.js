@@ -30,6 +30,7 @@ const Header = ({ onSearchUser }) => {
         <div className="control has-icons-left has-icons-right">
           <input
             className="input is-large is-rounded"
+            data-cy="search-input"
             onChange={handleChange}
             onKeyPress={handleKeyPress}
             placeholder="Who are you looking for?"

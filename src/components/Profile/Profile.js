@@ -57,7 +57,10 @@ const Profile = ({ data, loading, toggleProfile, visible }) => {
       </div>
       {visible && (
         <Fade>
-          <section className="box section container has-text-centered layout-container">
+          <section
+            className="box section container has-text-centered layout-container"
+            data-cy="profile-box"
+          >
             <div className="profile column is-paddingless is-narrow">
               <section className="profile is-centered">
                 <div className="avatar avatar-container">

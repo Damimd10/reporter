@@ -79,26 +79,27 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
     <Fade>
       <section
         className="box section container has-text-centered layout-container"
+        data-cy="statistic-box"
         style={{ maxWidth }}
       >
-        <div className="block chart-section contributions-chart">
+        <div className="block chart-section contributions-chart" data-cy="contributions-chart">
           <span className="heading is-size-4 chart-title">Contributions in last year</span>
           <Line id="contributions" data={contributionsDataSet} {...contributionConfiguration} />
         </div>
         <div className="columns is-multiline chart-section">
-          <div className="column is-4-desktop chart-section">
+          <div className="column is-4-desktop chart-section" data-cy="repositories-language-chart">
             <span className="heading is-size-6 chart-title">Repositories Per Language</span>
             {repositoriesPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={repositoriesPerLanguage} {...commonConfiguration} />
             )}
           </div>
-          <div className="column is-4-desktop chart-section">
+          <div className="column is-4-desktop chart-section" data-cy="stars-language-chart">
             <span className="heading is-size-6 chart-title">Stars Per Language</span>
             {starsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={starsPerLanguage} {...commonConfiguration} />
             )}
           </div>
-          <div className="column is-4-desktop chart-section">
+          <div className="column is-4-desktop chart-section" data-cy="commits-language-chart">
             <span className="heading is-size-6 chart-title">Commits Per Language</span>
             {commitsPerLanguage.labels.length > 0 && (
               <Doughnut id="by-language" data={commitsPerLanguage} {...commonConfiguration} />
@@ -106,11 +107,11 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
           </div>
         </div>
         <div className="columns is-multiline">
-          <div className="column is-6-desktop chart-section">
+          <div className="column is-6-desktop chart-section" data-cy="top-10-stars">
             <span className="heading is-size-5 chart-title">Top 10 Stars Repo</span>
             <Doughnut id="by-repository" data={starsTopTen} {...commonConfiguration} />
           </div>
-          <div className="column is-6-desktop chart-section">
+          <div className="column is-6-desktop chart-section" data-cy="top-10-commits">
             <span className="heading is-size-5 chart-title">Top 10 Commits Repo</span>
             <Doughnut id="by-repository" data={commitsTopTen} {...commonConfiguration} />
           </div>
