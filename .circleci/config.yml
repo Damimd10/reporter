@@ -62,11 +62,6 @@ jobs:
           name: Linting
           command: npm run lint
 
-  test:
-    record: true
-    parallel: true
-    parallelism: 10
-
   deploy:
     working_directory: ~/github-reporter
 
@@ -105,14 +100,18 @@ workflows:
       - lint:
           requires:
             - install
-      - test:
+      - cypress/install
+      - cypress/run:
           requires:
-            - install
+            - cypress/install
+          record: true
+          parallel: true
+          parallelism: 2
       - deploy:
           requires:
             - build
             - lint
-            - test
+            - cypress/run
           filters:
             branches:
               only:
