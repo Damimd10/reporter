@@ -100,8 +100,6 @@ workflows:
       - lint:
           requires:
             - install
-      - cypress/run:
-          record: true
       - deploy:
           requires:
             - build
