@@ -91,7 +91,7 @@ jobs:
 
 workflows:
   version: 2
-  install-build-lint-deploy:
+  build:
     jobs:
       - install
       - build:
