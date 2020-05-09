@@ -17,7 +17,9 @@ describe('Search User', () => {
     it('should find the sidebar and the statistics box', () => {
       cy.server();
       cy.route('POST', 'https://api.github.com/graphql', 'fixture:profile-query.json');
-      cy.route('POST', 'https://api.github.com/graphql', 'fixture:statistics-query.json');
+      cy.route('POST', 'https://api.github.com/graphql', 'fixture:statistics-query.json').as('api');
+
+      cy.wait('@api', { timeout: 10000 });
     });
 
     it('should contain a contributions chart', () => {
