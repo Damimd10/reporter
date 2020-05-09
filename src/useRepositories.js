@@ -28,8 +28,6 @@ const useRepositories = ({ user }) => {
     }
   }, [endCursor, fetchMore, hasNextPage, id, login, user]);
 
-  console.log('HERE', data);
-
   const parsedData = (pathOr([], ['user', 'repositories', 'edges']), data);
 
   return {

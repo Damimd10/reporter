@@ -1,11 +1,6 @@
 describe('Search User', () => {
   it('should load the main page', () => {
-    cy.visit('http://localhost:3000', {
-      onBeforeLoad(win) {
-        // force Apollo client to use XHR
-        delete win.fetch;
-      },
-    });
+    cy.visit('http://localhost:3000');
   });
 
   describe('when has a succesfull response', () => {
@@ -14,12 +9,15 @@ describe('Search User', () => {
       cy.get('[data-cy=search-input]').type('{enter}');
     });
 
-    it('should find the sidebar and the statistics box', () => {
+    it('Should be able to test GraphQL response data', () => {
       cy.server();
-      cy.route('POST', 'https://api.github.com/graphql', 'fixture:profile-query.json');
-      cy.route('POST', 'https://api.github.com/graphql', 'fixture:statistics-query.json').as('api');
 
-      cy.wait('@api', { timeout: 10000 });
+      cy.route({
+        method: 'POST',
+        url: 'https://api.github.com/graphql',
+      }).as('graphql');
+
+      cy.wait('@graphql');
     });
 
     it('should contain a contributions chart', () => {
