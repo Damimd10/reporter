@@ -66,7 +66,9 @@ jobs:
     working_directory: ~/github-reporter
 
     docker:
-      - image: circleci/node:12.9.1-browsers
+      - image: cypress/base:8
+        environment:
+          TERM: xterm
 
     steps:
       - checkout
@@ -74,13 +76,26 @@ jobs:
       - attach_workspace:
           at: ~/github-reporter
 
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+
       - run:
           name: Install Cypress
           command: sudo npm install --global --unsafe-perm cypress
 
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          # cache NPM modules and the folder with the Cypress binary
+          paths:
+            - ~/.npm
+            - ~/.cache
+
       - run:
           name: Test E2E
-          command: npm run ci:cypress-run
+          command: $(npm bin)/cypress run --record --key=${CYPRESS_RECORD_KEY}
 
   deploy:
     working_directory: ~/github-reporter
