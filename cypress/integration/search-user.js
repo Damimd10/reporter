@@ -1,4 +1,23 @@
+import { schema } from '@octokit/graphql-schema';
+import * as profileQuery from '../fixtures/profile-query.json';
+import * as statisticsQuery from '../fixtures/statistics-query.json';
+
 describe('Search User', () => {
+  beforeEach(() => {
+    cy.server();
+    cy.mockGraphql({
+      endpoint: 'https://api.github.com/graphql',
+      schema: schema.json,
+    }).as('mockGraphqlOps');
+
+    cy.mockGraphqlOps({
+      operations: {
+        Profile: profileQuery,
+        Statistics: statisticsQuery,
+      },
+    });
+  });
+
   it('should load the main page', () => {
     cy.visit('http://localhost:3000');
   });
@@ -7,10 +26,6 @@ describe('Search User', () => {
     it('should type "damimd10" on the search input and hit enter', () => {
       cy.get('[data-cy=search-input]').type('damimd10');
       cy.get('[data-cy=search-input]').type('{enter}');
-    });
-
-    it('Should be able to test GraphQL response data', () => {
-      cy.wait(5000);
     });
 
     it('should contain a contributions chart', () => {
