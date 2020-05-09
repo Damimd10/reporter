@@ -95,7 +95,7 @@ jobs:
 
       - run:
           name: Test E2E
-          command: npm run cy:cypress-run
+          command: npm run ci:cypress-run
 
   deploy:
     working_directory: ~/github-reporter
