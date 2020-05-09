@@ -94,12 +94,8 @@ jobs:
             - ~/.cache
 
       - run:
-          name: Start Server
-          command: start-server-and-test start http://localhost:3000
-
-      - run:
           name: Test E2E
-          command: $(npm bin)/cypress run --record --key=${CYPRESS_RECORD_KEY}
+          command: npm run cy:cypress-run
 
   deploy:
     working_directory: ~/github-reporter
