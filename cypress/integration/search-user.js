@@ -22,6 +22,8 @@ describe('Search User', () => {
           cy.route('POST', 'https://api.github.com/graphql', statistic);
         });
       });
+
+      cy.wait(4000);
     });
 
     it('should contain sidebar and statistic box', () => {
