@@ -37,7 +37,7 @@
     "ci:deploy:feature": "now --token $ZEIT_TOKEN --local-config /now.json --confirm",
     "ci:deploy:production": "now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm",
     "ci:deploy:staging": "now --token $ZEIT_TOKEN --local-config /staging.now.json",
-    "cypress:run": "cypress run --record --key=${CYPRESS_RECORD_KEY}",
+    "cypress:run": "cypress run --browser chrome --record --key=${CYPRESS_RECORD_KEY}",
     "ci:cypress-run": "start-server-and-test start http://localhost:3000 cypress:run"
   },
   "husky": {
