@@ -75,6 +75,10 @@ jobs:
           at: ~/github-reporter
 
       - run:
+          name: Install Cypress
+          command: sudo npm install --global --unsafe-perm cypress
+
+      - run:
           name: Test E2E
           command: npm run ci:cypress-run
 
