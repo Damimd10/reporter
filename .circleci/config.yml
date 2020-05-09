@@ -62,7 +62,7 @@ jobs:
           name: Linting
           command: npm run lint
 
-  lint:
+  test:
     working_directory: ~/github-reporter
 
     docker:
