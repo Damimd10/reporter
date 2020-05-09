@@ -10,14 +10,7 @@ describe('Search User', () => {
     });
 
     it('Should be able to test GraphQL response data', () => {
-      cy.server();
-
-      cy.route({
-        method: 'POST',
-        url: 'https://api.github.com/graphql',
-      }).as('graphql');
-
-      cy.wait('@graphql');
+      cy.wait(5000);
     });
 
     it('should contain a contributions chart', () => {
