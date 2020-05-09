@@ -18,13 +18,11 @@ describe('Search User', () => {
       cy.server();
       cy.fixture('profile-query.json').as('profileQuery');
       cy.fixture('statistics-query.json').as('statisticsQuery');
-      cy.route('POST', 'https://api.github.com/graphql', '@profileQuery').as('profileApi');
-      cy.route('POST', 'https://api.github.com/graphql', '@statisticsQuery').as('statisticApi');
+      cy.route('POST', 'https://api.github.com/graphql', '@profileQuery');
+      cy.route('POST', 'https://api.github.com/graphql', '@statisticsQuery');
 
-      cy.wait('@statisticApi').then(() => {
-        cy.get('[data-cy=profile-box]').should('be.visible');
-        cy.get('[data-cy=statistic-box]').should('be.visible');
-      });
+      cy.get('[data-cy=profile-box]').should('be.visible');
+      cy.get('[data-cy=statistic-box]').should('be.visible');
     });
 
     it('should contain a contributions chart', () => {
@@ -50,7 +48,6 @@ describe('Search User', () => {
     it('should contain a top 10 stars chart', () => {
       cy.get('[data-cy=top-10-stars]').should('be.visible');
     });
-
   });
 
   describe('when has an error response', () => {
@@ -66,7 +63,7 @@ describe('Search User', () => {
       cy.fixture('error-query.json').as('statisticError');
 
       cy.route('POST', 'https://api.github.com/graphql', '@statisticError');
-      cy.route('POST', 'https://api.github.com/graphql', '@profileError').as('statisticErrorApi');
+      cy.route('POST', 'https://api.github.com/graphql', '@profileError');
 
       cy.get('[data-cy=error-image').should('be.visible');
       cy.get('[data-cy=error-text]').should('be.visible');
