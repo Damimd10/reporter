@@ -51,12 +51,6 @@ describe('Search User', () => {
       cy.get('[data-cy=top-10-stars]').should('be.visible');
     });
 
-    it('should match with the image', () => {
-      cy.get('body').toMatchImageSnapshot({
-        name: 'main',
-        threshold: 0.001,
-      });
-    });
   });
 
   describe('when has an error response', () => {
@@ -76,13 +70,6 @@ describe('Search User', () => {
 
       cy.get('[data-cy=error-image').should('be.visible');
       cy.get('[data-cy=error-text]').should('be.visible');
-    });
-
-    it('should match with the image', () => {
-      cy.get('.box').toMatchImageSnapshot({
-        name: 'error',
-        threshold: 0.001,
-      });
     });
   });
 });
