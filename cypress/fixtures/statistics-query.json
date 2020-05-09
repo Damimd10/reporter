@@ -536,5 +536,7 @@
         ]
       }
     }
-  }
+  },
+  "error": null,
+  "loading": false
 }

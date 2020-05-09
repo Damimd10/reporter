@@ -2146,5 +2146,7 @@
       },
       "__typename": "User"
     }
-  }
+  },
+  "error": null,
+  "loading": false
 }
