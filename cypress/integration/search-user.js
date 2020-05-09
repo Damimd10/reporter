@@ -20,11 +20,13 @@ describe('Search User', () => {
         cy.fixture('statistics-query.json').then((statistic) => {
           cy.route('POST', 'https://api.github.com/graphql', profile);
           cy.route('POST', 'https://api.github.com/graphql', statistic);
-
-          cy.get('[data-cy=profile-box]').should('be.visible');
-          cy.get('[data-cy=statistic-box]').should('be.visible');
         });
       });
+    });
+
+    it('should contain sidebar and statistic box', () => {
+      cy.get('[data-cy=profile-box]').should('be.visible');
+      cy.get('[data-cy=statistic-box]').should('be.visible');
     });
 
     it('should contain a contributions chart', () => {
