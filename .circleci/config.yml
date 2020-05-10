@@ -1,4 +1,7 @@
 version: 2.0
+orbs:
+  cypress: cypress-io/cypress@1
+
 jobs:
   install:
     working_directory: ~/github-reporter
@@ -59,6 +62,41 @@ jobs:
           name: Linting
           command: npm run lint
 
+  test:
+    working_directory: ~/github-reporter
+
+    docker:
+      - image: cypress/base:10
+        environment:
+          TERM: xterm
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ~/github-reporter
+
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+
+      - run:
+          name: Install Cypress
+          command: npm install --global --unsafe-perm cypress
+
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          # cache NPM modules and the folder with the Cypress binary
+          paths:
+            - ~/.npm
+            - ~/.cache
+
+      - run:
+          name: Test E2E
+          command: npm run ci:cypress-run
+
   deploy:
     working_directory: ~/github-reporter
 
@@ -88,7 +126,7 @@ jobs:
 
 workflows:
   version: 2
-  install-build-lint-deploy:
+  install-build-deploy:
     jobs:
       - install
       - build:
@@ -97,10 +135,14 @@ workflows:
       - lint:
           requires:
             - install
+      - test:
+          requires:
+            - install
       - deploy:
           requires:
             - build
             - lint
+            - test
           filters:
             branches:
               only:

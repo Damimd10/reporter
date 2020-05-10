@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { pathOr, propOr } from 'ramda';
 import { useLazyQuery } from '@apollo/client';
 
@@ -14,6 +14,7 @@ import { PROFILE } from './queries';
 import './app.css';
 
 const App = () => {
+  const [showProfile, setShowProfile] = useState(true);
   const [getProfile, { data, error, loading }] = useLazyQuery(PROFILE);
   const { repositoriesLoading, repositoriesData, getStats } = useRepositories({
     user: propOr({}, 'user', data),
@@ -43,9 +44,16 @@ const App = () => {
           <Error />
         ) : (
           <>
-            <Profile data={data} loading={loading || repositoriesLoading} />
+            <Profile
+              data={data}
+              loading={loading || repositoriesLoading}
+              toggleProfile={setShowProfile}
+              visible={showProfile}
+            />
+
             <Statistics
               contributions={contributions}
+              hasProfile={showProfile}
               loading={loading || repositoriesLoading}
               stats={repositoriesData}
               userName={pathOr('', ['user', 'login'], data)}

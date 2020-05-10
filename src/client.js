@@ -1,9 +1,11 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from 'apollo-link-context';
+import fetch from 'unfetch';
 
 const ENDPOINT = 'https://api.github.com/graphql';
 
 const httpLink = createHttpLink({
+  fetch,
   uri: ENDPOINT,
 });
 

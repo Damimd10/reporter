@@ -25,11 +25,12 @@ const Header = ({ onSearchUser }) => {
   }
 
   return (
-    <header className="section">
+    <header className="section header-container">
       <div className="field">
         <div className="control has-icons-left has-icons-right">
           <input
             className="input is-large is-rounded"
+            data-cy="search-input"
             onChange={handleChange}
             onKeyPress={handleKeyPress}
             placeholder="Who are you looking for?"
