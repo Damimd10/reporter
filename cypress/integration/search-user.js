@@ -1,25 +1,10 @@
-import { schema } from '@octokit/graphql-schema';
-import * as profileQuery from '../fixtures/profile-query.json';
-import * as statisticsQuery from '../fixtures/statistics-query.json';
-
 describe('Search User', () => {
-  beforeEach(() => {
-    cy.server();
-    cy.mockGraphql({
-      endpoint: 'https://api.github.com/graphql',
-      schema: schema.json,
-    }).as('mockGraphqlOps');
-
-    cy.mockGraphqlOps({
-      operations: {
-        Profile: profileQuery,
-        Statistics: statisticsQuery,
+  it('should load the main page', () => {
+    cy.visit('http://localhost:3000', {
+      onBeforeLoad(win) {
+        delete win.fetch;
       },
     });
-  });
-
-  it('should load the main page', () => {
-    cy.visit('http://localhost:3000');
   });
 
   describe('when has a succesfull response', () => {
