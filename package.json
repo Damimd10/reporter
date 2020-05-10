@@ -37,7 +37,7 @@
     "lint": "eslint src/*.js --fix-dry-run",
     "ci:deploy:feature": "now --token $ZEIT_TOKEN --local-config /now.json --confirm",
     "ci:deploy:production": "now --token $ZEIT_TOKEN --local-config /now.json --prod --confirm",
-    "ci:deploy:staging": "now --token $ZEIT_TOKEN --local-config /staging.now.json",
+    "ci:deploy:staging": "now --token $ZEIT_TOKEN --local-config --target=staging",
     "cypress:run": "cypress run --record --key=${CYPRESS_RECORD_KEY}",
     "ci:cypress-run": "start-server-and-test start http://localhost:3000 cypress:run"
   },
