@@ -31,3 +31,11 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+.collapsible {
+  padding: 1rem !important;
+  margin: 0 1rem;
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+}

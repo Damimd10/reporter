@@ -1,0 +1,542 @@
+{
+  "data": {
+    "user": {
+      "__typename": "User",
+      "id": "MDQ6VXNlcjI2NDE5OTg1",
+      "repositories": {
+        "__typename": "RepositoryConnection",
+        "pageInfo": {
+          "__typename": "PageInfo",
+          "hasNextPage": false,
+          "endCursor": "Y3Vyc29yOnYyOpIAzgeAySE="
+        },
+        "edges": [
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "reporter",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 1
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 138
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "graphql-schema",
+              "isArchived": false,
+              "isFork": true,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 0
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "react-router",
+              "isArchived": false,
+              "isFork": true,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 0
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "invoice-authentication-module",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "TypeScript",
+                "color": "#2b7489"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": null
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "Detox",
+              "isArchived": false,
+              "isFork": true,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 0
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "react-native-firebase-docs",
+              "isArchived": false,
+              "isFork": true,
+              "primaryLanguage": null,
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 0
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "invoice-backend",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": null
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "node-exercises",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 6
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "album-virtual",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "movie-fan",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 12
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "shipwell",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 7
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "functional-exercises",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 6
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "pokegraph",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "TypeScript",
+                "color": "#2b7489"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 46
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "temperature-control",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 10
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "truffle",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 27
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "Pokedex",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "TypeScript",
+                "color": "#2b7489"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 149
+                  }
+                }
+              }
+            }
+          },
+          {
+            "__typename": "RepositoryEdge",
+            "node": {
+              "__typename": "Repository",
+              "owner": {
+                "__typename": "User",
+                "login": "Damimd10"
+              },
+              "name": "runner-tracker",
+              "isArchived": false,
+              "isFork": false,
+              "primaryLanguage": {
+                "__typename": "Language",
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "stargazers": {
+                "__typename": "StargazerConnection",
+                "totalCount": 0
+              },
+              "masterBranch": {
+                "__typename": "Ref",
+                "target": {
+                  "__typename": "Commit",
+                  "history": {
+                    "__typename": "CommitHistoryConnection",
+                    "totalCount": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "error": null,
+  "loading": false
+}

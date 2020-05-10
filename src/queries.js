@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const PROFILE = gql`
-  query($name: String!) {
+  query Profile($name: String!) {
     user(login: $name) {
       avatarUrl
       bio

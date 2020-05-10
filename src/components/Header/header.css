@@ -1,3 +1,8 @@
+.header-container {
+  padding: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
 .search-icon {
   pointer-events: initial !important;
   cursor: pointer;
