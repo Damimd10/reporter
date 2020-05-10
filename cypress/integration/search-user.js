@@ -36,6 +36,13 @@ describe('Search User', () => {
     it('should contain a top 10 stars chart', () => {
       cy.get('[data-cy=top-10-stars]').should('be.visible');
     });
+
+    it('should match with the snapshot of the success screen', () => {
+      cy.get('body').snapshot({
+        name: 'Success Screen',
+        threshold: 0.01,
+      });
+    });
   });
 
   describe('when has an error response', () => {
@@ -55,6 +62,13 @@ describe('Search User', () => {
 
       cy.get('[data-cy=error-image').should('be.visible');
       cy.get('[data-cy=error-text]').should('be.visible');
+    });
+
+    it('shoudl match with the snapshot of the error screen', () => {
+      cy.get('.box').snapshot({
+        name: 'Error Screen',
+        threshold: 0.01,
+      });
     });
   });
 });
