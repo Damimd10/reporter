@@ -38,7 +38,7 @@ describe('Search User', () => {
     });
 
     it('should match with the snapshot of the success screen', () => {
-      cy.get('body').snapshot({
+      cy.get('body').toMatchSnapshot({
         name: 'Success Screen',
         threshold: 0.01,
       });
@@ -64,8 +64,8 @@ describe('Search User', () => {
       cy.get('[data-cy=error-text]').should('be.visible');
     });
 
-    it('shoudl match with the snapshot of the error screen', () => {
-      cy.get('.box').snapshot({
+    it('should match with the snapshot of the error screen', () => {
+      cy.get('.box').toMatchSnapshot({
         name: 'Error Screen',
         threshold: 0.01,
       });
