@@ -11,11 +11,17 @@ import Statistics from './components/Statistics';
 
 import useRepositories from './useRepositories';
 
+import history from './history';
+
 import { PROFILE } from './queries';
 
 import './app.css';
 
 ReactGA.initialize(process.env.REACT_APP_ANALYTIC_TOKEN);
+
+history.listen((location) => {
+  console.log('HERE', location);
+});
 
 const App = () => {
   const [showProfile, setShowProfile] = useState(true);
@@ -29,9 +35,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    ReactGA.event({
-      action: 'User enter to main screen',
-    });
+    const { pathname } = history.location;
+    ReactGA.set({ page: pathname });
+    ReactGA.pageview(pathname);
   }, []);
 
   useEffect(() => {
