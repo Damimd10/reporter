@@ -19,10 +19,6 @@ import './app.css';
 
 ReactGA.initialize(process.env.REACT_APP_ANALYTIC_TOKEN);
 
-history.listen((location) => {
-  console.log('HERE', location);
-});
-
 const App = () => {
   const [showProfile, setShowProfile] = useState(true);
   const [getProfile, { data, error, loading }] = useLazyQuery(PROFILE);
