@@ -29,7 +29,7 @@ const App = () => {
   });
 
   const handleSearchUser = (username) => {
-    getProfile({ variables: { name: username } });
+    getProfile({ variables: { name: username.trim() } });
   };
 
   const hasInitialUser = () => {
