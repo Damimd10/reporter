@@ -19,6 +19,8 @@ import './app.css';
 
 ReactGA.initialize(process.env.REACT_APP_ANALYTIC_TOKEN);
 
+const { pathname } = history.location;
+
 const App = () => {
   const [showProfile, setShowProfile] = useState(true);
   const [getProfile, { data, error, loading }] = useLazyQuery(PROFILE);
@@ -30,8 +32,16 @@ const App = () => {
     getProfile({ variables: { name: username } });
   };
 
+  const hasInitialUser = () => {
+    return pathname !== '/';
+  };
+
   useEffect(() => {
-    const { pathname } = history.location;
+    if (hasInitialUser()) {
+      const githubUser = pathname.substring(1);
+      getProfile({ variables: { name: githubUser } });
+    }
+
     ReactGA.set({ page: pathname });
     ReactGA.pageview(pathname);
   }, []);
@@ -50,7 +60,10 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Header onSearchUser={handleSearchUser} />
+      <Header
+        {...(hasInitialUser() ? { initialValue: pathname.substring(1) } : undefined)}
+        onSearchUser={handleSearchUser}
+      />
       <div className="columns">
         {error ? (
           <Error />

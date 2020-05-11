@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { func } from 'prop-types';
+import { func, string } from 'prop-types';
 
 import './header.css';
 
-const Header = ({ onSearchUser }) => {
+const Header = ({ initialValue, onSearchUser }) => {
   const inputElement = useRef(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(initialValue || '');
 
   useEffect(() => {
     inputElement.current.focus();
@@ -22,7 +22,7 @@ const Header = ({ onSearchUser }) => {
   const handleRemove = () => {
     setQuery('');
     inputElement.current.focus();
-  }
+  };
 
   return (
     <header className="section header-container">
@@ -51,7 +51,12 @@ const Header = ({ onSearchUser }) => {
 };
 
 Header.propTypes = {
+  initialValue: string,
   onSearchUser: func.isRequired,
+};
+
+Header.defaultProps = {
+  initialValue: null,
 };
 
 export default Header;
