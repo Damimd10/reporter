@@ -12,9 +12,8 @@ const MediaContainer = ({ user }) => {
       <div className="container">
         <div className="media-content">
           <TwitterShareButton
-            title="Hey! check my github stats here"
+            title={`Hey! check my github stats here https://github-reporter.now.sh/${user}`}
             hashtags={['github', 'reporter', 'stats', 'react', 'js', 'dev']}
-            url={`https://github-reporter.now.sh/${user}`}
           >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
