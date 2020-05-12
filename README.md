@@ -6,10 +6,10 @@
 
 ![Screenshot](./media/example-1.png)
 
-### How to star ?
+### How to use?
 
-- Enter to [Github Reporter](https://github-reporter.now.sh/)
-- Enter a github username like me `damimd10` and hit enter
+- Open [Github Reporter](https://github-reporter.now.sh/)
+- Enter a github username like `damimd10` and hit enter
 
 That's it, simple.
 
@@ -19,7 +19,7 @@ That's it, simple.
 - Animations with [React Reveal](https://www.react-reveal.com/)
 - [Bulma](https://bulma.io/)
 - Responsive
-- Continuos Integration with [CircleCI](https://circleci.com/)
+- Continuous Integration with [CircleCI](https://circleci.com/)
 - Deploy with [Vercel](https://vercel.com/)
 - E2E Test with [Cypress](https://www.cypress.io/)
 - Developer tools - eslint - prettier - husky
@@ -32,4 +32,6 @@ That's it, simple.
 
 ## Contributing
 
-This tool is to provide a better visualization way to developers and recruiters about the contributions of a user on github, as well as see their orientation and where they stand out. Any suggestion, or additional feature, will be welcome.
+This tool is to provide a better visualization to developers and recruiters about the contributions of a user on github, as well as to see their orientation and where they stand out.
+
+Any suggestions, bugs or additional features are welcome.
