@@ -45,7 +45,7 @@ const App = () => {
 
     ReactGA.set({ page: pathname });
     ReactGA.pageview(pathname);
-  }, []);
+  }, [getProfile]);
 
   useEffect(() => {
     if (data) {
