@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, shape, string } from 'prop-types';
+import { bool, object, string } from 'prop-types';
 import { compose, filter, pathOr, reduce } from 'ramda';
 import { isMobile } from 'react-device-detect';
 
@@ -122,10 +122,10 @@ const Statistics = ({ contributions, hasProfile, loading, stats, userName }) => 
 };
 
 Statistics.propTypes = {
-  contributions: shape({}).isRequired,
+  contributions: object.isRequired,
   hasProfile: bool.isRequired,
   loading: bool.isRequired,
-  stats: shape({}).isRequired,
+  stats: object.isRequired,
   userName: string.isRequired,
 };
 

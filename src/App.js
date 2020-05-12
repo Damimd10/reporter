@@ -6,6 +6,7 @@ import ReactGA from 'react-ga';
 
 import Error from './components/Error';
 import Header from './components/Header';
+import MediaContainer from './components/MediaContainer';
 import Profile from './components/Profile';
 import Statistics from './components/Statistics';
 
@@ -64,6 +65,7 @@ const App = () => {
         {...(hasInitialUser() ? { initialValue: pathname.substring(1) } : undefined)}
         onSearchUser={handleSearchUser}
       />
+      {data && <MediaContainer user={data.user} />}
       <div className="columns">
         {error ? (
           <Error />

@@ -28,6 +28,7 @@
     "react-ga": "^2.7.0",
     "react-reveal": "^1.2.2",
     "react-scripts": "3.4.0",
+    "react-share": "^4.1.0",
     "unfetch": "^4.1.0"
   },
   "scripts": {
